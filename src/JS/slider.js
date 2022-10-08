@@ -1,4 +1,4 @@
-export function slider() {
+export default function slider() {
   const slidesContainer = document.getElementById('slides-container');
   const slide = document.querySelector('.slide');
   const prevButton = document.getElementById('slide-arrow-prev');
