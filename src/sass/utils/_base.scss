@@ -24,8 +24,8 @@ ol {
 button {
   cursor: pointer;
 
-  transition: color 250ms $timig-function,
-    background-color 300ms $timig-function, box-shadow 250ms $timig-function;
+  transition: color 250ms $timing-function,
+    background-color 300ms $timing-function, box-shadow 250ms $timing-function;
 }
 
 img {
@@ -41,8 +41,8 @@ body {
 .link {
   text-decoration: none;
 
-  transition: color 250ms $timig-function,
-    background-color 300ms $timig-function;
+  transition: color 250ms $timing-function,
+    background-color 300ms $timing-function;
 }
 
 .list {
@@ -79,4 +79,3 @@ body {
   // padding-right: 32px;
   // margin-left: auto;
   // margin-right: auto;
-
