@@ -1,8 +1,18 @@
 @import './utils/variables';
 @import './utils/base';
+
 @import './utils/is-hidden';
 
+
+@import './utils/mixins';
+
 @import './layouts/header';
+@import './layouts/header-main';
 @import './layouts/main';
 @import './layouts/footer';
+
 @import './layouts/modal-footer';
+
+
+@import './layouts/gallery';
+
