@@ -1,0 +1,197 @@
+.header{
+    padding-top: 44px;
+    padding-bottom: 44px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(to right,
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
+            url('../images/im.header-main/header-main-mobile1.jpg');
+    flex-grow: 1;  
+
+    @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.56),
+                    rgba(0, 0, 0, 0.56)),
+                url('../images/im.header-main/header-main-mobile2x.jpg');
+        }
+
+
+    @media screen and (min-width: 768px) {
+        background-image: linear-gradient(to right,
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
+            url('../images/im.header-main/header-main-tablet1x.jpg');
+
+    @media  (min-device-pixel-ratio: 2),
+            (-webkit-min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+                background-image: linear-gradient(to right,
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
+            url('../images/im.header-main/header-main-tablet2x.jpg');
+                }
+        }  
+
+      
+    @media screen and (min-width: 1280px) {
+        background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.56)),
+                url('../images/im.header-main/header-main-desktop1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: linear-gradient(to right,
+                rgba(0, 0, 0, 0.56),
+                                rgba(0, 0, 0, 0.56)),
+                            url('../images/im.header-main/header-main-tablet2x.jpg');
+        }
+    }
+}
+
+.nav-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 57px;
+
+    @media screen and (min-width: 768px) {
+            margin-bottom: 41px;
+        }
+}
+
+.header-title{
+    display: none;
+    color:#FFFFFF;
+    @media screen and (min-width: 768px) {
+        display: block;
+        margin-left: 10px;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.17;
+        // color: #FFFFFF;
+        
+    }
+    transition: color $timig-function , 250ms;
+
+&:hover{
+    color: darkgrey;
+}
+}
+
+.header-logo__link{
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+}
+
+.header-logo__icon{
+    color:#FFFFFF;
+}
+
+.header-list {
+    display: flex;
+    align-items: center;
+
+    font-weight: 500;
+    line-height: 1.17;
+    text-transform: uppercase;
+}
+
+.header-list__item:not(:last-child) {
+    margin-right: 39px;
+}
+
+.header-list__link{
+    position: relative;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color:#FFFFFF;
+    text-decoration: none;
+     
+    transition: color $timig-function, 250ms;
+
+    &--current::after {
+       content:'';
+       position: absolute;
+       display: flex;
+       width: 100%;
+       height: 3px;
+       border-radius: 2px;
+       bottom: -1px;
+       background-color: #FF001B;
+    }
+    &:hover{
+        color:darkgray;
+    }
+}
+
+.header-search-form{
+    margin: 0 auto 16px auto;
+    position: relative;
+    
+    @media screen and (min-width: 768px) {
+        width: 336px;
+        margin-bottom: 20px;
+        }
+    
+    @media screen and (min-width: 1280px) {
+        width: 394px;
+        }
+}
+
+.header-search-form__input{
+    width: 100%;
+    height: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color:#FFFFFF;
+    border: none;
+    border-bottom: 0.5px solid white;
+    background-color:transparent ;
+    outline:none;
+    font-size: 14px;
+    line-height: 1.14;
+
+&::placeholder{
+    font-size: 14px;
+    line-height: 1.14;
+    color:white;
+
+    }
+}
+
+.header-search-form__buton{
+    width: 12px;
+    height: 12px;
+    border: none;
+    outline: none;
+    position: absolute;
+    padding: 0;
+    top: 4px;
+    right: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.header-info{
+    display:none;
+    font-size: 14px;
+    line-height: 1.14;
+    color: #FF001B;
+    
+ @media screen and (min-width: 768px) {
+    text-align: center;
+    
+    
+    }
+}
