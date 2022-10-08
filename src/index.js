@@ -1,3 +1,5 @@
 import { fetchPopFilms } from "./JS/main"
+import { renderFilms } from "./JS/main"
 
-fetchPopFilms();
+
+fetchPopFilms().then(renderFilms);
