@@ -61,7 +61,7 @@
 }
 
 .gallery__title {
-    color: var($primary-text-color);
+    color: $primary-text-color;
     font-size: 12px;
     line-height: 1.334;
     font-weight: 500;
@@ -73,7 +73,7 @@
 }
 
 .gallery__genre {
-    color: var($accent-text-color);
+    color: $accent-text-color;
     font-size: 12px;
     line-height: 1.334;
     font-weight: 500;
