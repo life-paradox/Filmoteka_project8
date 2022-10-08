@@ -1,4 +1,30 @@
-.pagination__number.active {
-    color: #fff;
-    background: $accent-text-color;
-  }
+.pagination{
+
+    &__wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__number, &__button {
+        height: 40px;
+        width: 40px;
+        background-color: transparent;
+        border: unset;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.333;
+    }
+
+    &__number.active{
+        color: #fff;
+        background: $accent-text-color;
+    }
+
+    &__pages span {
+        cursor: default;
+        -ms-user-select: none;
+        user-select: none;
+      }
+}
