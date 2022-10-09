@@ -678,6 +678,7 @@
 // saveToLocalStorage('QUEUE', galleryItems2);
 // //////////////////////////////////////////////
 const moviesList = document.querySelector('.gallery');
+const paginationNav = document.querySelector('.pagination__wrapper');
 const paginationWrapper = document.querySelector('.pagination__pages');
 const nextButton = document.querySelector('#next-button');
 const prevButton = document.querySelector('#prev-button');
@@ -686,7 +687,7 @@ const queueButton = document.querySelector('.button_queue');
 
 let currentPage;
 let pageCount;
-const paginationLimit = 6;
+const paginationLimit = 20;
 let movies = [];
 
 window.addEventListener('load', pagination('QUEUE'));
@@ -780,6 +781,15 @@ function markupMovies(films) {
 //Render and pagination
 function pagination(key) {
   updateMovies(key);
+
+  if(movies.length === 0){
+    console.log(paginationNav);
+    paginationNav.classList.add('hidden');
+    return;
+  }
+
+  paginationNav.classList.remove('hidden');
+  pageCount = Math.ceil(movies.length / paginationLimit);
   renderPage(1);
 
   prevButton.addEventListener('click', () => {
@@ -803,11 +813,10 @@ function updateMovies(key) {
   if (movies === null) {
     movies = [];
     clearContainer(moviesList);
-    pageCount = 1;
     insertListItems("Oops...Nothing added.");
     return;
   }
-  pageCount = Math.ceil(movies.length / paginationLimit);
+  
 }
 
 function getFromLocalStorage(key) {
@@ -818,7 +827,7 @@ function getFromLocalStorage(key) {
 function renderPage(pageNum) {
   currentPage = pageNum;
 
-  if (movies.length > 0) {
+ 
     const prevRange = (pageNum - 1) * paginationLimit;
     const currRange = pageNum * paginationLimit;
     const currentMovies = movies.slice(prevRange, currRange);
@@ -829,7 +838,7 @@ function renderPage(pageNum) {
       left: 0,
       behavior: 'smooth'
     });
-  }
+  
 
   window.innerWidth >= 768
     ? getPaginationNumbers(paginationMarkup(currentPage, pageCount))
