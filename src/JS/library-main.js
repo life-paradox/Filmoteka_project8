@@ -681,7 +681,8 @@ const moviesList = document.querySelector('.gallery');
 const paginationWrapper = document.querySelector('.pagination__pages');
 const nextButton = document.querySelector('#next-button');
 const prevButton = document.querySelector('#prev-button');
-const headerButtons = document.querySelector('.button_list');
+const watchedButton = document.querySelector('.button_watched');
+const queueButton = document.querySelector('.button_queue');
 
 let currentPage;
 let pageCount;
@@ -690,8 +691,20 @@ let movies = [];
 
 window.addEventListener('load', pagination('QUEUE'));
 
-headerButtons.addEventListener('click', e => {
+watchedButton.addEventListener('click', e => {
   pagination(e.target.textContent);
+  queueButton.classList.remove("button_queue");
+  watchedButton.classList.add("button_queue");
+  watchedButton.classList.remove("button_watched");
+  queueButton.classList.add("button_watched");
+});
+
+queueButton.addEventListener('click', e => {
+  pagination(e.target.textContent);
+  watchedButton.classList.remove("button_queue");
+  queueButton.classList.add("button_queue");
+  queueButton.classList.remove("button_watched");
+  watchedButton.classList.add("button_watched");
 });
 
 //Markups
@@ -729,11 +742,9 @@ function paginationMarkupMobile(currentPage, pageCount) {
     currentPage + 2,
   ];
   filteredCenter = center.filter(p => p >= 1 && p <= pageCount);
-  console.log(filteredCenter);
   includeTwoRight = currentPage === 1;
   includeOneRight = currentPage === 2;
 
-  console.log(includeTwoRight);
   if (includeTwoRight) filteredCenter.push(currentPage + 3, currentPage + 4);
   if (includeOneRight) filteredCenter.push(currentPage + 3);
 
@@ -741,7 +752,6 @@ function paginationMarkupMobile(currentPage, pageCount) {
 }
 
 function markupMovies(films) {
-  console.log(films);
   return films
     .map(
       ({
@@ -807,7 +817,6 @@ function getFromLocalStorage(key) {
 
 function renderPage(pageNum) {
   currentPage = pageNum;
-  console.log(movies);
 
   if (movies.length > 0) {
     const prevRange = (pageNum - 1) * paginationLimit;
@@ -881,7 +890,6 @@ function enableButton(button) {
 }
 
 function handlePageButtonsStatus() {
-  console.log(currentPage === 1);
   if (currentPage === 1) {
     disableButton(prevButton);
   } else {
