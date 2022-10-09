@@ -1,1 +1,1 @@
-export * from "./JS/library-pagination";
+export * from "./JS/library-main";
