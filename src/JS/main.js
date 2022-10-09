@@ -45,19 +45,31 @@ export { fetchQueryFilm };
   // Рендер карточек
 function renderFilms(films) {
   const markup = films.results.map(({title, poster_path, genre_ids, release_date
-  }) => {
+  }) => { 
+
+    const genreName = genre_ids.map(element => 
+      parseGenres.genres.find(genre => genre.id === element)
+      ).map(element=> element.name).join(', ');
+      //console.log(genreName);
+      
           return `<li class="gallery__item">
             <a class="gallery__link" href="">
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
             </a>
             <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
-                <p class="gallery__genre">${genre_ids}</p>
+                <p class="gallery__genre">${genreName}</p>
                 <p class="gallery__year">${release_date.slice(0, 4)}</p>
             </div>
         </li>`
       }).join('');
-  galleryRef.innerHTML = markup; 
+  console.log(films.results);
+  galleryRef.innerHTML = markup;
   return films;
 }
 export { renderFilms };
+
+//Парсінг жанрів
+const savedGenres = localStorage.getItem("genres");
+const parseGenres = JSON.parse(savedGenres);
+console.log(parseGenres.genres);
