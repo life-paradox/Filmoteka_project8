@@ -44,7 +44,13 @@ export { fetchQueryFilm };
   
   // Рендер карточек
 function renderFilms(films) {
-  const markup = films.results.map(({title, poster_path, genre_ids, release_date
+  const markup = films.results.map(({
+    title,
+    poster_path,
+    genre_ids,
+    release_date,
+    first_air_date,
+    year = release_date || first_air_date || ' - ',
   }) => {
           return `<li class="gallery__item">
             <a class="gallery__link" href="">
@@ -53,7 +59,7 @@ function renderFilms(films) {
             <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
                 <p class="gallery__genre">${genre_ids}</p>
-                <p class="gallery__year">${release_date.slice(0, 4)}</p>
+                <p class="gallery__year">${year.slice(0, 4)}</p>
             </div>
         </li>`
       }).join('');
