@@ -10,5 +10,19 @@ genres();
 
 fetchPopFilms().then(renderFilms).then(pagination);
 
-slider();
 
+
+// поиск по ключевому слову
+
+const formRef = document.querySelector(".header-search-form");
+formRef.addEventListener("submit", onSearch);
+function onSearch(e) {
+  e.preventDefault();
+  const searchData = formRef.elements.searchQuery.value.trim();
+  console.log(searchData);
+  if (searchData !== '') {
+    fetchQueryFilm(searchData).then(renderFilms);
+  }
+}
+
+slider();
