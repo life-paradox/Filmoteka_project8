@@ -794,7 +794,7 @@ function updateMovies(key) {
     movies = [];
     clearContainer(moviesList);
     pageCount = 1;
-    insertNotification();
+    insertListItems("Oops...Nothing added.");
     return;
   }
   pageCount = Math.ceil(movies.length / paginationLimit);
@@ -857,10 +857,6 @@ function insertListItems(items) {
 
 function clearContainer(container) {
   container.innerHTML = '';
-}
-
-function insertNotification() {
-  moviesList.prepend('No movies are found');
 }
 
 // Handle pagination buttons
