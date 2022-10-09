@@ -1,3 +1,25 @@
+.modal-footer {
+  background-color: white;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: block;
+  height: 90vh;
+
+  width: 280px;
+
+  @include mq(tablet) {
+    width: 704px;
+  }
+
+  @include mq(desktop) {
+    width: 806px;
+  }
+}
+
 //slider
 
 .slider-wrapper {
