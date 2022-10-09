@@ -815,6 +815,11 @@ function renderPage(pageNum) {
     const currentMovies = movies.slice(prevRange, currRange);
     clearContainer(moviesList);
     insertListItems(markupMovies(currentMovies));
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   window.innerWidth >= 768
@@ -873,12 +878,10 @@ function handleActivePageNumber() {
 
 function disableButton(button) {
   button.classList.add('hidden');
-  button.setAttribute("hidden", true);
 }
 
 function enableButton(button) {
   button.classList.remove('hidden');
-  button.removeAttribute('hidden');
 }
 
 function handlePageButtonsStatus() {
