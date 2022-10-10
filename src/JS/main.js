@@ -79,7 +79,7 @@ function onModalEvent(evt) {
     return;
   }
   a();
-  // console.log(evt.path[1].children[1].firstElementChild.textContent);
+  console.log(evt.path[1].children[1].firstElementChild.textContent);
   console.log(evt.target.title);
 }
 export { renderFilms };
