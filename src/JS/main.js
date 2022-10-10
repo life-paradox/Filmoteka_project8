@@ -81,4 +81,6 @@ export { renderFilms };
 //Парсінг жанрів
 const savedGenres = localStorage.getItem("genres");
 const parseGenres = JSON.parse(savedGenres);
+
 console.log(parseGenres.genres);
+
