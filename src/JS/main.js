@@ -64,7 +64,8 @@ function renderFilms(films) {
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
             </a>
             <div class="gallery__info">
-                <p class="gallery__title">${title}</p>
+                <p class="gallery__title cut-text">${title}</p>
+
                 <p class="gallery__genre">${genreOutput.join(', ')}</p>     
                 <p class="gallery__year">${year.slice(0, 4)}</p>
 
