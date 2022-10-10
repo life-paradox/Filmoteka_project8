@@ -44,24 +44,21 @@ export { fetchQueryFilm };
 
 // Рендер карточек
 function renderFilms(films) {
-  const markup = films.results
-    .map(
-      ({
-        title,
-        poster_path,
-        genre_ids,
-        release_date,
-        first_air_date,
-        year = release_date || first_air_date || ' - ',
-      }) => {
-        const genreName = genre_ids
-          .map(element =>
-            parseGenres.genres.find(genre => genre.id === element)
-          )
-          .map(element => element.name)
-          .join(',');
+  const markup = films.results.map(
+    ({
+      title,
+      poster_path,
+      genre_ids,
+      release_date,
+      first_air_date,
+      year = release_date || first_air_date || ' - ',
+    }) => {
+      const genreName = genre_ids
+        .map(element => parseGenres.genres.find(genre => genre.id === element))
+        .map(element => element.name)
+        .join(',');
 
-        return `<li class="gallery__item">
+      return `<li class="gallery__item">
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
             <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
@@ -70,9 +67,8 @@ function renderFilms(films) {
 
             </div>
         </li>`;
-      }
-    )
-    .join('');
+    }
+  );
   galleryRef.innerHTML = markup;
   return films;
 }
@@ -83,7 +79,8 @@ function onModalEvent(evt) {
     return;
   }
   a();
-  console.log(evt.path[1].children[1].firstElementChild.textContent);
+  // console.log(evt.path[1].children[1].firstElementChild.textContent);
+  console.log(evt.target.title);
 }
 export { renderFilms };
 
