@@ -80,7 +80,7 @@
         // color: #FFFFFF;
         
     }
-    transition: color $timig-function , 250ms;
+    transition: color $timing-function , 250ms;
 
 &:hover{
     color: darkgrey;
@@ -118,7 +118,7 @@
     color:#FFFFFF;
     text-decoration: none;
      
-    transition: color $timig-function, 250ms;
+    transition: color $timing-function, 250ms;
 
     &--current::after {
        content:'';

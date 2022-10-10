@@ -23,5 +23,25 @@
         fill="#FF6B08"
       />
     </symbol>
+    
+    <!-- Arrow Left -->
+    <symbol id="arrow-left" viewBox="0 0 16 16" fill="none">
+      <path d="M12.6666 8H3.33325" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.99992 12.6668L3.33325 8.00016L7.99992 3.3335" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    
+    <!-- Arrow Right -->
+    <symbol id="arrow-right" viewBox="0 0 16 16" fill="none">
+      <path d="M3.33341 8H12.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8.00008 12.6668L12.6667 8.00016L8.00008 3.3335" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    
+    <!-- Close Button -->
+    <svg id="close-btn" viewBox="0 0 30 30" fill="none">
+      <path d="M8 8L22 22" stroke="black" stroke-width="2"/>
+      <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
+    </svg>
+
+    
   </defs>
 </svg>

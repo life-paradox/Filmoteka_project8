@@ -1,7 +1,16 @@
 @import './utils/variables';
 @import './utils/base';
+@import './utils/is-hidden';
+@import './utils/mixins';
+
 @import './layouts/header';
 @import './layouts/header-main';
+@import './layouts/library-header';
+
 @import './layouts/main';
+@import './layouts/index-main';
+
 @import './layouts/footer';
+@import './layouts/library-pagination';
+@import './layouts/modal-footer';
 
