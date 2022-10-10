@@ -22,7 +22,6 @@ function genres() {
 export { genres };
 
 
-
 // Фетч популярных фильмов
 const fetchPopFilms = async () => {
   const response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=1`);
@@ -48,13 +47,18 @@ function renderFilms(films) {
   const markup = films.results.map(({title, poster_path, genre_ids, release_date, first_air_date,
     year = release_date || first_air_date || ' - ',
   }) => { 
+    
+    const genreName = genre_ids.map(element =>
+      parseGenres.genres.find(genre => genre.id === element));
+      let genreOutput;
+       if (genre_ids.length > 3) {
+        genreOutput = genreName.map(element=> element.name).slice(0,2);
+        genreOutput.push('інщі');
+       } else {
+        genreOutput = genreName.map(element=> element.name);
+       }
 
-    const genreName = genre_ids.map(element => 
-      parseGenres.genres.find(genre => genre.id === element)
-      ).map(element=> element.name).join(', ');
-      //console.log(genreName);
-      
-
+      //console.log(genreOutput);
           return `<li class="gallery__item">
             <a class="gallery__link" href="">
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
@@ -62,7 +66,7 @@ function renderFilms(films) {
             <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
 
-                <p class="gallery__genre">${genreName}</p>     
+                <p class="gallery__genre">${genreOutput.join(', ')}</p>     
                 <p class="gallery__year">${year.slice(0, 4)}</p>
 
             </div>
