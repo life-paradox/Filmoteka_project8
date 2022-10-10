@@ -14,7 +14,6 @@ function genres() {
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=uk-UA`
       );
       const genres = await response.json();
-      console.log(genres);
       localStorage.setItem('genres', JSON.stringify(genres));
     };
     fetchGenres();
@@ -29,7 +28,6 @@ const fetchPopFilms = async () => {
   );
   const films = await response.json();
 
-  console.log(films);
   return films;
 };
 export { fetchPopFilms };
@@ -40,7 +38,6 @@ const fetchQueryFilm = async query => {
     `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=uk-UA&query=${query}&page=1&include_adult=false`
   );
   const films = await response.json();
-  console.log(films);
   return films;
 };
 export { fetchQueryFilm };
@@ -63,7 +60,6 @@ function renderFilms(films) {
           )
           .map(element => element.name)
           .join(',');
-        //console.log(genreName);
 
         return `<li class="gallery__item">
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
@@ -78,7 +74,6 @@ function renderFilms(films) {
       }
     )
     .join('');
-  console.log(films.results);
   galleryRef.innerHTML = markup;
   return films;
 }
@@ -87,12 +82,13 @@ export { renderFilms };
 //Парсінг жанрів
 const savedGenres = localStorage.getItem('genres');
 const parseGenres = JSON.parse(savedGenres);
-console.log(parseGenres.genres);
 
-galleryRef.addEventListener('click', e => {
-  if (e.target === e.currentTarget) {
+galleryRef.addEventListener('click', onModalEvent);
+
+function onModalEvent(evt) {
+  if (evt.target === evt.currentTarget) {
     return;
   }
   a();
-  console.log(e.path[1].children[1].firstElementChild.textContent);
-});
+  console.log(evt.path[1].children[1].firstElementChild.textContent);
+}

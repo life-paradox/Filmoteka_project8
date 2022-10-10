@@ -3,7 +3,7 @@ export default function a() {
   <div class = 'modal'>
   <img src = ''/>
   <title class = 'film-title'>qweqewq </title>
-  <p class = 'film-votes'>dsfdsaf</p>
+  <p class = 'film-votes'></p>
   <p class = 'film-popularity' >gdsafds</p>
   <p class = 'genre'>gdsafds</p>
   <p class = 'film-about'>fdsafsafdsafdsafsdfdsass</p>
