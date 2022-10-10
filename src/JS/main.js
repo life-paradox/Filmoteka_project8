@@ -1,6 +1,11 @@
 import { API_KEY } from "./api-key";
 const galleryRef = document.querySelector(".gallery");
 
+//Парсінг жанрів
+const savedGenres = localStorage.getItem("genres");
+const parseGenres = JSON.parse(savedGenres);
+console.log(parseGenres.genres);
+
 // фетч жанров
 
 // https://api.themoviedb.org/3/genre/movie/list?api_key=861782ee1fc6aacf939bc06e51306075&language=uk-UA
@@ -78,7 +83,3 @@ function renderFilms(films) {
 }
 export { renderFilms };
 
-//Парсінг жанрів
-const savedGenres = localStorage.getItem("genres");
-const parseGenres = JSON.parse(savedGenres);
-console.log(parseGenres.genres);
