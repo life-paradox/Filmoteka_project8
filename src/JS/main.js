@@ -46,8 +46,7 @@ export { fetchQueryFilm };
   // Рендер карточек
 function renderFilms(films) {
 
-  const savedGenres = localStorage.getItem("genres");
-  const parseGenres = JSON.parse(savedGenres);
+  
   
   const markup = films.results.map(({title, poster_path, genre_ids, release_date, first_air_date,
     year = release_date || first_air_date || ' - ',
@@ -84,5 +83,6 @@ function renderFilms(films) {
 export { renderFilms };
 
 //Парсінг жанрів
-
+const savedGenres = localStorage.getItem("genres");
+const parseGenres = JSON.parse(savedGenres);
 console.log(parseGenres.genres);
