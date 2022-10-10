@@ -1,46 +1,50 @@
-.pagination{
+.pagination {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &__wrapper{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    padding-bottom: 60px;
 
-        // padding-bottom: 140px;
-    }
-
-    &__number, &__button {
-        height: 40px;
-        width: 40px;
-        background-color: transparent;
-        border: unset;
-        border-radius: 5px;
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 1.333;
-    }
-
-    &__number.active{
-        color: #fff;
-        background: $accent-text-color;
-    }
-
-    &__arrow {
-        height: 16px;
-        width: 16px;
-    }
-
-    &__pages span {
-        cursor: default;
-        -ms-user-select: none;
-        user-select: none;
+    @include mq(mobile-only) {
+        padding-bottom: 40px;
       }
+  }
+
+  &__number,
+  &__button {
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border: unset;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.333;
+  }
+
+  &__number.active {
+    color: #fff;
+    background: $accent-text-color;
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__pages span {
+    cursor: default;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }
 
-.hidden{
-    display: none;
-    visibility: hidden;
+.hidden {
+  display: none;
+  visibility: hidden;
 }
 
 .gallery {
-    min-height:69vh;
+  min-height: 64vh;
 }
