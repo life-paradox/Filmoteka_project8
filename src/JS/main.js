@@ -1,10 +1,7 @@
 import { API_KEY } from "./api-key";
 const galleryRef = document.querySelector(".gallery");
 
-//Парсінг жанрів
-const savedGenres = localStorage.getItem("genres");
-const parseGenres = JSON.parse(savedGenres);
-console.log(parseGenres.genres);
+
 
 // фетч жанров
 
@@ -83,3 +80,7 @@ function renderFilms(films) {
 }
 export { renderFilms };
 
+//Парсінг жанрів
+const savedGenres = localStorage.getItem("genres");
+const parseGenres = JSON.parse(savedGenres);
+console.log(parseGenres.genres);
