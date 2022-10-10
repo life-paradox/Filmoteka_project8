@@ -65,7 +65,6 @@ function renderFilms(films) {
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
             <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
-
                 <p class="gallery__genre">${genreName}</p>     
                 <p class="gallery__year">${year.slice(0, 4)}</p>
 
@@ -77,12 +76,6 @@ function renderFilms(films) {
   galleryRef.innerHTML = markup;
   return films;
 }
-export { renderFilms };
-
-//Парсінг жанрів
-const savedGenres = localStorage.getItem('genres');
-const parseGenres = JSON.parse(savedGenres);
-
 galleryRef.addEventListener('click', onModalEvent);
 
 function onModalEvent(evt) {
@@ -92,3 +85,8 @@ function onModalEvent(evt) {
   a();
   console.log(evt.path[1].children[1].firstElementChild.textContent);
 }
+export { renderFilms };
+
+//Парсінг жанрів
+const savedGenres = localStorage.getItem('genres');
+const parseGenres = JSON.parse(savedGenres);
