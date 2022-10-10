@@ -1,4 +1,5 @@
 import { API_KEY } from './api-key';
+import a from './modal-film';
 const galleryRef = document.querySelector('.gallery');
 
 // фетч жанров
@@ -27,6 +28,7 @@ const fetchPopFilms = async () => {
     `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=1`
   );
   const films = await response.json();
+
   console.log(films);
   return films;
 };
@@ -60,7 +62,7 @@ function renderFilms(films) {
             parseGenres.genres.find(genre => genre.id === element)
           )
           .map(element => element.name)
-          .join(', ');
+          .join(',');
         //console.log(genreName);
 
         return `<li class="gallery__item">
@@ -86,3 +88,11 @@ export { renderFilms };
 const savedGenres = localStorage.getItem('genres');
 const parseGenres = JSON.parse(savedGenres);
 console.log(parseGenres.genres);
+
+galleryRef.addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    return;
+  }
+  a();
+  console.log(e.path[1].children[1].firstElementChild.textContent);
+});
