@@ -5,6 +5,10 @@
     justify-content: center;
 
     margin-bottom: 60px;
+
+    @include mq(mobile-only) {
+        margin-bottom: 40px;
+      }
   }
 
   &__number,
