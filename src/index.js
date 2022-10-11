@@ -8,7 +8,7 @@ import { genres } from "./JS/main";
 
 genres();
 
-fetchPopFilms().then(renderFilms).then(pagination);
+fetchPopFilms().then(pagination);
 
 
 
