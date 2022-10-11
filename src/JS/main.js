@@ -1,4 +1,5 @@
 import { API_KEY } from "./api-key";
+import { currentPage } from "./pagination";
 const galleryRef = document.querySelector(".gallery");
 
 // фетч жанров
@@ -22,8 +23,8 @@ export { genres };
 
 
 // Фетч популярных фильмов
-const fetchPopFilms = async () => {
-  const response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=1`);
+const fetchPopFilms = async (page) => {
+  const response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=${page}`);
   const films = await response.json();
   console.log(films);
   return films;
