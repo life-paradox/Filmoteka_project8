@@ -28,7 +28,7 @@ function pagination(films) {
   }
 
   // paginationNav.classList.remove('hidden');
-  pageCount = Math.ceil(movies.results.length / paginationLimit);
+  pageCount = Math.ceil(movies.total_results / paginationLimit);
   renderPage(1);
 
   prevButton.addEventListener('click', () => {
