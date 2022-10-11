@@ -50,6 +50,7 @@
 .gallery__link {
     display: block;
     width: 100%;
+    background-size: cover;
     @include mq(mobile) {
         height: 398px;
         background-image: url(/src/images/index-main/index-main-mobile.jpg);
