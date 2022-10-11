@@ -45,6 +45,7 @@ function paginationMarkupMobile(currentPage, pageCount) {
 }
 
 function markupMovies(films) {
+  console.log(films)
   const galleryRef = document.querySelector(".gallery");
   const savedGenres = localStorage.getItem("genres");
   const parseGenres = JSON.parse(savedGenres);
@@ -55,12 +56,12 @@ function markupMovies(films) {
     const genreName = genre_ids.map(element =>
       parseGenres.genres.find(genre => genre.id === element));
       let genreOutput;
-       if (genre_ids.length > 3) {
+      if (genre_ids.length > 3) {
         genreOutput = genreName.map(element=> element.name).slice(0,2);
         genreOutput.push('інщі');
-       } else {
+      } else {
         genreOutput = genreName.map(element=> element.name);
-       }
+      }
 
       console.log(genreOutput);
           return `<li class="gallery__item">

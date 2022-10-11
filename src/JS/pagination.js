@@ -3,8 +3,10 @@ import {
   paginationMarkupMobile,
   markupMovies,
 } from './index-markups';
+import { fetchPopFilms, renderFilms } from './main';
 
 export { pagination };
+export { currentPage };
 
 
 const moviesList = document.querySelector('.gallery');
@@ -29,32 +31,36 @@ function pagination(films) {
 
   // paginationNav.classList.remove('hidden');
   pageCount = Math.ceil(movies.total_results / paginationLimit);
-  renderPage(1);
+  renderPage(films);
 
   prevButton.addEventListener('click', () => {
-    renderPage(currentPage - 1);
+    fetchPopFilms(currentPage - 1).then(renderPage);
+
+    
   });
 
   nextButton.addEventListener('click', () => {
-    renderPage(currentPage + 1);
+    fetchPopFilms(currentPage + 1).then(renderPage);
   });
 
   paginationWrapper.addEventListener('click', e => {
     if (e.target.hasAttribute('page-index')) {
-      renderPage(Number(e.target.getAttribute('page-index')));
+      fetchPopFilms(Number(e.target.getAttribute('page-index'))).then(renderPage);
+      
     }
   });
 }
 
 
-function renderPage(pageNum) {
-  currentPage = pageNum;
-
-  const prevRange = (pageNum - 1) * paginationLimit;
-  const currRange = pageNum * paginationLimit;
-  const currentMovies = movies;
+function renderPage(films) {
+  currentPage = films.page;
+console.log(films)
+  // const prevRange = (pageNum - 1) * paginationLimit;
+  // const currRange = pageNum * paginationLimit;
+  const currentMovies = films.results;
+  console.log(currentMovies);
   clearContainer(moviesList);
-  insertListItems(markupMovies(currentMovies));
+  insertListItems(markupMovies(films));
   window.scrollTo({
     top: 0,
     left: 0,
