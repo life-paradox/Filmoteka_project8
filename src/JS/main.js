@@ -84,3 +84,34 @@ export { renderFilms };
 // const savedGenres = localStorage.getItem("genres");
 // const parseGenres = JSON.parse(savedGenres);
 // console.log(parseGenres.genres);
+
+//Спіннер
+const preloader = document.querySelector('#preloader');
+
+preloader.classList.add('show-preloader');
+
+window.addEventListener('load', function () {
+	setTimeout(function(){
+    	preloader.classList.remove('show-preloader');
+	}, 1000);
+});
+
+//Скролл
+
+window.onscroll = function() {
+    let scrollElem = document.getElementById("scrollToTop");
+    if (document.documentElement.scrollTop > document.documentElement.clientHeight) {
+        scrollElem.style.opacity = "1";
+    } else {
+        scrollElem.style.opacity = "0";
+    }
+}
+
+let timeOut;
+function goUp() {
+    var top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+    if(top > 0) {
+        window.scrollBy(0,-100);
+        timeOut = setTimeout('goUp()',20);
+    } else clearTimeout(timeOut);
+}
