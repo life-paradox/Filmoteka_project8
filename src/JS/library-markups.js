@@ -54,6 +54,8 @@ function markupMovies(films) {
         genre_ids,
         release_date,
         first_air_date,
+        vote_average,
+        vote = vote_average.toFixed(1) || ' - ',
         year = release_date || first_air_date || ' - ',
       }) => {
         const parseGenres = getFromLocalStorage('genres');
@@ -76,6 +78,7 @@ function markupMovies(films) {
                     <p class="gallery__title">${title || name}</p>
                     <p class="gallery__genre">${genreOutput.join(', ')}</p>
                     <p class="gallery__year">${year.slice(0, 4)}</p>
+                    <p class="gallery__vote">${vote}</p>
                 </div>
             </li>`;
       }
