@@ -58,12 +58,10 @@ function markupMovies(films) {
       let genreOutput;
       if (genre_ids.length > 3) {
         genreOutput = genreName.map(element=> element.name).slice(0,2);
-        genreOutput.push('інщі');
+        genreOutput.push('інші');
       } else {
         genreOutput = genreName.map(element=> element.name);
       }
-
-      console.log(genreOutput);
           return `<li class="gallery__item">
             <a class="gallery__link" href="">
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
@@ -77,7 +75,7 @@ function markupMovies(films) {
             </div>
         </li>`
       }).join('');
-  console.log(films.results);
-  galleryRef.innerHTML = markup;
-  return films;
+return markup
 }
+
+export {galleryRef}

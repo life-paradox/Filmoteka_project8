@@ -9,7 +9,7 @@ export { pagination };
 export { currentPage };
 
 
-const moviesList = document.querySelector('.gallery');
+const galleryRef = document.querySelector('.gallery');
 const paginationNav = document.querySelector('.pagination__wrapper');
 const paginationWrapper = document.querySelector('.pagination__pages');
 const nextButton = document.querySelector('#next-button');
@@ -59,7 +59,7 @@ console.log(films)
   // const currRange = pageNum * paginationLimit;
   const currentMovies = films.results;
   console.log(currentMovies);
-  clearContainer(moviesList);
+  clearContainer(galleryRef);
   insertListItems(markupMovies(films));
   window.scrollTo({
     top: 0,
@@ -97,7 +97,7 @@ function getPaginationNumbers(items) {
 }
 
 function insertListItems(items) {
-  moviesList.insertAdjacentHTML('beforeend', items);
+  galleryRef.insertAdjacentHTML('beforeend', items);
 }
 
 function clearContainer(container) {

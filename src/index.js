@@ -12,6 +12,7 @@ fetchPopFilms(1).then(pagination);
 
 
 
+
 // поиск по ключевому слову
 
 const formRef = document.querySelector(".header-search-form");
