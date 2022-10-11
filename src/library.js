@@ -1,4 +1,5 @@
 import { pagination } from './JS/library-main';
+import { theme } from './JS/themeRender';
 
 const watchedButton = document.querySelector('.button_watched');
 const queueButton = document.querySelector('.button_queue');

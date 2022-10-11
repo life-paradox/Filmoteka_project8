@@ -139,7 +139,8 @@
   padding: 13px 36px;
 
   transition: color$timing-function, 250ms;
-  &:hover {
+  &:hover,
+  &:focus {
     color: darkgrey;
   }
 }
@@ -158,12 +159,13 @@
   padding: 13px 36px;
 
   transition: color$timing-function, 250ms;
-  &:hover {
+  &:hover,
+  &:focus {
     color: darkgrey;
   }
 }
 
-.hidden {
+.hidden-lib {
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -175,7 +177,24 @@
   margin-left: 14px;
   color: $secondary-text-color;
   transition: color$timing-function, 250ms;
-  &:hover {
+  &:hover,
+  &:focus {
     color: darkgrey;
   }
+}
+.theme-day {
+  position: absolute;
+  right: 10px;
+  top: 230px;
+  transition: color$timing-function, 250ms;
+  border-radius: 10px;
+  &:hover,
+  &:focus {
+    background-color: $accent-text-color;
+  }
+}
+.theme-day--svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
