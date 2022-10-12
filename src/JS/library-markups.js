@@ -11,7 +11,6 @@ function paginationMarkup(currentPage, pageCount) {
       currentPage + 2,
     ];
 
-    console.log(center);
     filteredCenter = center.filter(p => p > 1 && p < pageCount);
     includeThreeLeft = currentPage === 5;
     includeThreeRight = currentPage === pageCount - 4;
@@ -29,6 +28,7 @@ function paginationMarkup(currentPage, pageCount) {
 
 function paginationMarkupMobile(currentPage, pageCount) {
   if (pageCount <= 1) return [1];
+
   const center = [
     currentPage - 2,
     currentPage - 1,
