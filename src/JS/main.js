@@ -1,5 +1,5 @@
 import { API_KEY } from './api-key';
-import a from './modal-film';
+import createModal from './modal-film';
 const galleryRef = document.querySelector('.gallery');
 
 // фетч жанров
@@ -27,6 +27,8 @@ const fetchPopFilms = async () => {
     `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=1`
   );
   const films = await response.json();
+  const parsedFilms = JSON.stringify(films.results);
+  localStorage.setItem('films', parsedFilms);
 
   return films;
 };
@@ -47,6 +49,7 @@ function renderFilms(films) {
   const markup = films.results.map(
     ({
       title,
+      id,
       poster_path,
       genre_ids,
       release_date,
@@ -56,32 +59,60 @@ function renderFilms(films) {
       const genreName = genre_ids
         .map(element => parseGenres.genres.find(genre => genre.id === element))
         .map(element => element.name)
-        .join(',');
+        .join(' ');
 
       return `<li class="gallery__item">
-                <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
-            <div class="gallery__info">
+                <a href = ''>
+                <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" data-id="${id}" alt="" loading="lazy">
+                 <div class="gallery__info">
                 <p class="gallery__title">${title}</p>
                 <p class="gallery__genre">${genreName}</p>     
                 <p class="gallery__year">${year.slice(0, 4)}</p>
-
             </div>
-        </li>`;
+            </a>
+          </li>`;
     }
   );
+
   galleryRef.innerHTML = markup;
   return films;
 }
 galleryRef.addEventListener('click', onModalEvent);
 
 function onModalEvent(evt) {
-  if (evt.target === evt.currentTarget) {
-    return;
-  }
-  a();
-  console.log(evt.path[1].children[1].firstElementChild.textContent);
-  console.log(evt.target.title);
+  evt.preventDefault();
+
+  const film = localStorage.getItem('films');
+  const parsedFilms = JSON.parse(film);
+  const films = parsedFilms.find(element => {
+    const genreName = element.genre_ids
+      .map(element => parseGenres.genres.find(genre => genre.id === element))
+      .map(element => element.name)
+      .join('');
+
+    if (Number(evt.target.dataset.id) === element.id) {
+      const mk = `<div class = 'backdrop'>
+      <div class = 'modal'>
+      <img src = ''/>
+      <p class = 'film-votes'>Vote/votes ${element.vote_average.toFixed(1)}/${
+        element.vote_count
+      }</p>
+      <p class = 'film-title'>Original Title ${element.original_title}</p>
+      <p class = 'film-popularity'> </p>
+      <p class = 'genre'>${genreName}</p>
+      <p class = 'film-about'>About <br>${element.overview}</p>
+<button> ADD TO WATCHED </button>
+<button> ADD TO QUEUE </button>
+</div>
+</div>`;
+      return document.body.insertAdjacentHTML('afterbegin', mk);
+    }
+  });
 }
+
+// console.log(evt.target);
+// console.log(evt.target.dataset.id);
+
 export { renderFilms };
 
 //Парсінг жанрів
