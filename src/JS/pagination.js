@@ -67,7 +67,10 @@ console.log(films)
     behavior: 'smooth',
   });
 
-  window.innerWidth >= 768
+  // const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  const width = document.documentElement.clientWidth;
+  console.log(width);
+  width >= 768
     ? getPaginationNumbers(paginationMarkup(currentPage, pageCount))
     : getPaginationNumbers(paginationMarkupMobile(currentPage, pageCount));
   handleActivePageNumber();
