@@ -7,7 +7,8 @@ import { genres } from './JS/main';
 
 genres();
 
-fetchPopFilms().then(renderFilms).then(pagination);
+fetchPopFilms(1).then(pagination);
+
 
 // поиск по ключевому слову
 
@@ -23,3 +24,19 @@ function onSearch(e) {
 }
 
 slider();
+
+
+// SCROLL
+const progressBar = document.querySelector('.progress-bar');
+window.addEventListener('scroll', moveProgressBar);
+
+function moveProgressBar() {
+  const windowScroll =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  const windowHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const width_progress_line = (windowScroll / windowHeight) * 100;
+  progressBar.style.width = width_progress_line + '%';
+}
+

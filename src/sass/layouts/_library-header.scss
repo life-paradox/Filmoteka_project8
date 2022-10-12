@@ -1,40 +1,78 @@
-@media screen and (max-width: 480px) {
-  .header_lib {
-    background-image: url('../images/bg-img/Rectangle-mob1.jpg');
+.header_lib {
+  padding-top: 44px;
+  padding-bottom: 44px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('../images/bg-img/Rectangle-mob1.jpg');
+  // flex-grow: 1;
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 230px;
-  }
-
-  .is-hidden {
-    display: none;
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/bg-img/Rectangle-mob1@2x.jpg');
   }
 }
 
-@media screen and (min-width: 480px), (max-width: 1280px) {
+@media screen and (min-width: 768px) {
   .header_lib {
-    background-image: url('../images/bg-img/Rectangle-tab1.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 219px;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/bg-img/Rectangle-tab1.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/bg-img/Rectangle-tab1@2x.jpg');
+    }
   }
 }
+
 @media screen and (min-width: 1280px) {
   .header_lib {
-    background-image: url('../images/bg-img/Rectangle-desc1.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 216px;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('../images/bg-img/Rectangle-desc1.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('../images/bg-img/Rectangle-desc1@2x.jpg');
+    }
   }
 }
 .logo > img {
-  width: 20px;
-  height: 20px;
   margin-top: 44px;
+  width: 30px;
 }
 .header_nav {
   display: flex;
@@ -44,6 +82,7 @@
 .header_nav--film {
   margin-top: 44px;
 }
+
 .header_nav--home {
   margin-left: auto;
   margin-right: 39px;
@@ -64,25 +103,27 @@
 }
 
 .header_nav--link {
+  position: relative;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
   color: $secondary-text-color;
 
   padding: 5px 10px;
+  transition: color$timing-function, 250ms;
+  &:hover {
+    color: darkgrey;
+  }
 }
-.button_queue {
-  color: $secondary-text-color;
-  background-color: $accent-text-color;
-
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-
-  border: 1px solid $accent-text-color;
-  border-radius: 5px;
-
-  padding: 13px 36px;
+.header_nav--current::after {
+  content: '';
+  position: absolute;
+  display: flex;
+  width: 80%;
+  height: 3px;
+  right: 10px;
+  border-radius: 2px;
+  background-color: #f10c27;
 }
 .button_watched {
   color: $secondary-text-color;
@@ -96,4 +137,64 @@
   background-color: rgba(255, 255, 255, 0);
 
   padding: 13px 36px;
+
+  transition: color$timing-function, 250ms;
+  &:hover,
+  &:focus {
+    color: darkgrey;
+  }
+}
+
+.button_queue {
+  color: $secondary-text-color;
+  background-color: $accent-text-color;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  border: 1px solid $accent-text-color;
+  border-radius: 5px;
+
+  padding: 13px 36px;
+
+  transition: color$timing-function, 250ms;
+  &:hover,
+  &:focus {
+    color: darkgrey;
+  }
+}
+
+.hidden-lib {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+.header_nav--filmoteka {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  margin-left: 14px;
+  color: $secondary-text-color;
+  transition: color$timing-function, 250ms;
+  &:hover,
+  &:focus {
+    color: darkgrey;
+  }
+}
+.theme-day {
+  position: absolute;
+  right: 10px;
+  top: 230px;
+  transition: color$timing-function, 250ms;
+  border-radius: 10px;
+  &:hover,
+  &:focus {
+    background-color: $accent-text-color;
+  }
+}
+.theme-day--svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

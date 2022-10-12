@@ -1,4 +1,6 @@
+
 import { API_KEY } from './api-key';
+import { currentPage } from "./pagination";
 import onModalEvent from './modal-film';
 import createModal from './modal-film';
 const galleryRef = document.querySelector('.gallery');
@@ -7,6 +9,7 @@ const galleryRef = document.querySelector('.gallery');
 
 // https://api.themoviedb.org/3/genre/movie/list?api_key=861782ee1fc6aacf939bc06e51306075&language=uk-UA
 function genres() {
+
   if (localStorage.getItem('genres')) {
     return;
   } else {
@@ -27,6 +30,7 @@ const fetchPopFilms = async () => {
   const response = await fetch(
     `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=1`
   );
+
   const films = await response.json();
   const parsedFilms = JSON.stringify(films.results);
   localStorage.setItem('films', parsedFilms);
@@ -45,29 +49,35 @@ const fetchQueryFilm = async query => {
 };
 export { fetchQueryFilm };
 
-// Рендер карточек
+  
+  // Рендер карточек
 function renderFilms(films) {
-  const markup = films.results.map(
-    ({
-      title,
-      id,
-      poster_path,
-      genre_ids,
-      release_date,
-      first_air_date,
-      year = release_date || first_air_date || ' - ',
-    }) => {
-      const genreName = genre_ids
-        .map(element => parseGenres.genres.find(genre => genre.id === element))
-        .map(element => element.name)
-        .join(' ');
+  const savedGenres = localStorage.getItem("genres");
+  const parseGenres = JSON.parse(savedGenres);
+  const markup = films.results.map(({title, id, poster_path, genre_ids, release_date, first_air_date,
+    year = release_date || first_air_date || ' - ',
+  }) => { 
+    
+    const genreName = genre_ids.map(element =>
+      parseGenres.genres.find(genre => genre.id === element));
+      let genreOutput;
+       if (genre_ids.length > 3) {
+        genreOutput = genreName.map(element=> element.name).slice(0,2);
+        genreOutput.push('інщі');
+       } else {
+        genreOutput = genreName.map(element=> element.name);
+       }
 
-      return `<li class="gallery__item">
-                <a href = ''>
+      console.log(genreOutput);
+          return `<li class="gallery__item">
+            <a class="gallery__link" href="">
                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" data-id="${id}" alt="" loading="lazy">
-                 <div class="gallery__info">
-                <p class="gallery__title">${title}</p>
-                <p class="gallery__genre">${genreName}</p>     
+            </a>
+            <div class="gallery__info">
+                <p class="gallery__title cut-text">${title}</p>
+
+                <p class="gallery__genre">${genreOutput.join(', ')}</p>     
+
                 <p class="gallery__year">${year.slice(0, 4)}</p>
             </div>
             </a>
@@ -82,6 +92,9 @@ galleryRef.addEventListener('click', onModalEvent);
 
 export { renderFilms };
 
-//Парсінг жанрів
-const savedGenres = localStorage.getItem('genres');
-const parseGenres = JSON.parse(savedGenres);
+
+
+// const savedGenres = localStorage.getItem("genres");
+// const parseGenres = JSON.parse(savedGenres);
+// console.log(parseGenres.genres);
+
