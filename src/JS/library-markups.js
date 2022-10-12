@@ -36,16 +36,8 @@ function paginationMarkupMobile(currentPage, pageCount) {
     currentPage + 1,
     currentPage + 2,
   ];
-  console.log(center);
-  const filteredCenter = center.filter(p => p >= 1 && p <= pageCount);
-  console.log(filteredCenter);
-  includeTwoRight = currentPage === 1;
-  includeOneRight = currentPage === 2;
-
-  if (includeTwoRight) filteredCenter.push(currentPage + 3, currentPage + 4);
-  if (includeOneRight) filteredCenter.push(currentPage + 3);
-
-  return [...filteredCenter];
+  
+  return [...сenter];
 }
 
 function markupMovies(films) {
