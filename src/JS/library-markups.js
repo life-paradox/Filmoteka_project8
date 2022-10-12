@@ -9,11 +9,13 @@ function paginationMarkup(currentPage, pageCount) {
       currentPage,
       currentPage + 1,
       currentPage + 2,
-    ],
-    filteredCenter = center.filter(p => p > 1 && p < pageCount),
-    includeThreeLeft = currentPage === 5,
-    includeThreeRight = currentPage === pageCount - 4,
-    includeLeftDots = currentPage > 5,
+    ];
+
+    console.log(center);
+    filteredCenter = center.filter(p => p > 1 && p < pageCount);
+    includeThreeLeft = currentPage === 5;
+    includeThreeRight = currentPage === pageCount - 4;
+    includeLeftDots = currentPage > 5;
     includeRightDots = currentPage < pageCount - 4;
 
   if (includeThreeLeft) filteredCenter.unshift(2);
