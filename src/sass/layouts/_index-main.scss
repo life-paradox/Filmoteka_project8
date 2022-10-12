@@ -1,10 +1,10 @@
 .gallery {
-    padding-top: 60px;
+  padding-top: 60px;
 
-    //margin-left: auto;
-    //margin-right: auto;
-    display: flex;
-    flex-wrap: wrap;
+  //margin-left: auto;
+  //margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
 
     @include mq(mobile-only) {
         padding-top: 20px;
@@ -24,30 +24,34 @@
     @include mq(desktop) {
         column-gap: 16px;
     }
+
 }
 
 .gallery__item {
-    height: auto;
-    @include mq(mobile) {
-        width: 280px;
-    }
-    
-    @include mq(tablet) {
-        width: 336px;
-    }
+  height: auto;
+  @include mq(mobile) {
+    width: 280px;
+  }
 
-    @include mq(desktop) {
-        width: 394px;
-    }
+  @include mq(tablet) {
+    width: 336px;
+  }
 
-    @include transition (box-shadow);
+  @include mq(desktop) {
+    width: 394px;
+  }
 
-    &:hover,
-    &:focus {
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);}
+  @include transition(box-shadow);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
+  }
 }
 
 .gallery__link {
+
     display: block;
     width: 100%;
     background-size: cover;
@@ -74,76 +78,77 @@
             background-image: url(/src/images/index-main/index-main-desktop2x.jpg);
         }
     }
+
 }
 
 .gallery__image {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .gallery__info {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
 
-    @include mq(mobile) {
-        margin-top: 10px;
-    }
-    
-    @include mq(tablet) {
-        margin-top: 8px;
-    }
+  @include mq(mobile) {
+    margin-top: 10px;
+  }
 
-    @include mq(desktop) {
-        margin-top: 12px;
-    }
+  @include mq(tablet) {
+    margin-top: 8px;
+  }
+
+  @include mq(desktop) {
+    margin-top: 12px;
+  }
 }
 
 .gallery__title {
-    width: 100%;
-    color: $primary-text-color;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 1.334;
-    font-weight: 500;
+  width: 100%;
+  color: $primary-text-color;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.334;
+  font-weight: 500;
 
-    @include mq(desktop) {
-        font-size: 20px;
-        line-height: 1.2;
-    }
+  @include mq(desktop) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
 .gallery__genre {
-    color: $accent-text-color;
-    text-transform: capitalize;
-    font-size: 12px;
-    line-height: 1.334;
-    font-weight: 500;
+  color: $accent-text-color;
+  text-transform: capitalize;
+  font-size: 12px;
+  line-height: 1.334;
+  font-weight: 500;
 
-    @include mq(desktop) {
-        font-size: 20px;
-        line-height: 1.2;
-    }
-    &::after {
-        content: " |";
-    }
+  @include mq(desktop) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  &::after {
+    content: ' |';
+  }
 }
 
 .gallery__year {
-    color: $accent-text-color;
-    text-transform: capitalize;
-    font-size: 12px;
-    line-height: 1.334;
-    font-weight: 500;
-    margin-left: 3px;
+  color: $accent-text-color;
+  text-transform: capitalize;
+  font-size: 12px;
+  line-height: 1.334;
+  font-weight: 500;
+  margin-left: 3px;
 
-    @include mq(desktop) {
-        font-size: 20px;
-        line-height: 1.2;
-        margin-left: 5px;
-    }
+  @include mq(desktop) {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-left: 5px;
+  }
 }
 
 .cut-text {
