@@ -36,7 +36,9 @@ function paginationMarkupMobile(currentPage, pageCount) {
     currentPage + 1,
     currentPage + 2,
   ];
-  filteredCenter = center.filter(p => p >= 1 && p <= pageCount);
+  console.log(center);
+  const filteredCenter = center.filter(p => p >= 1 && p <= pageCount);
+  console.log(filteredCenter);
   includeTwoRight = currentPage === 1;
   includeOneRight = currentPage === 2;
 
