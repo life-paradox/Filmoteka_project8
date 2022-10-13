@@ -2,6 +2,7 @@ import { API_KEY } from './api-key';
 import { currentPage } from './pagination';
 import onModalEvent from './modal-film';
 import createModal from './modal-film';
+import { searchData } from '../index';
 const galleryRef = document.querySelector('.gallery');
 
 // фетч жанров
@@ -41,7 +42,7 @@ export { fetchGenres };
 // Фетч популярных фильмов
 const fetchPopFilms = async page => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=uk-UA&page=${page}`
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
   );
 
   const films = await response.json();
@@ -52,61 +53,14 @@ const fetchPopFilms = async page => {
 export { fetchPopFilms };
 
 // фетч по ключевому слову
-const fetchQueryFilm = async query => {
+const fetchQueryFilm = async (page) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=uk-UA&query=${query}&page=1&include_adult=false`
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchData}&page=${page}&include_adult=false`
   );
   const films = await response.json();
   return films;
 };
 export { fetchQueryFilm };
-
-// Рендер карточек
-// function renderFilms(films) {
-//   const savedGenres = localStorage.getItem('genres');
-//   const parseGenres = JSON.parse(savedGenres);
-
-//   const markup = films.results.map(
-//     ({
-//       title,
-//       id,
-//       poster_path,
-//       genre_ids,
-//       release_date,
-//       first_air_date,
-//       year = release_date || first_air_date || ' - ',
-//     }) => {
-//       const genreName = genre_ids.map(element =>
-//         parseGenres.genres.find(genre => genre.id === element)
-//       );
-//       let genreOutput;
-//       if (genre_ids.length > 3) {
-//         genreOutput = genreName.map(element => element.name).slice(0, 2);
-//         genreOutput.push('інщі');
-//       } else {
-//         genreOutput = genreName.map(element => element.name);
-//       }
-
-//       console.log(genreOutput);
-//       return `<li class="gallery__item">
-//             <a class="gallery__link" href="">
-//                 <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" data-id="${id}" alt="" loading="lazy">
-//             </a>
-//             <div class="gallery__info">
-//                 <p class="gallery__title cut-text">${title}</p>
-
-//                 <p class="gallery__genre">${genreOutput.join(', ')}</p>     
-
-//                 <p class="gallery__year">${year.slice(0, 4)}</p>
-//             </div>
-//             </a>
-//           </li>`;
-//     }
-//   );
-
-//   galleryRef.innerHTML = markup;
-//   return films;
-// }
 
 galleryRef.addEventListener('click', onModalEvent);
 
