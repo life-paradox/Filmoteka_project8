@@ -71,7 +71,6 @@
   }
 }
 .logo > img {
-  margin-top: 44px;
   width: 30px;
 }
 .header_nav {
@@ -79,24 +78,16 @@
   justify-content: center;
   align-items: center;
 }
-.header_nav--film {
-  margin-top: 44px;
-}
 
 .header_nav--home {
   margin-left: auto;
   margin-right: 39px;
-  margin-top: 44px;
 }
-.header_nav--lib {
-  margin-top: 44px;
-}
+
 .button_list {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-top: 60px;
 }
 .button_list-watch {
   margin-right: 20px;
@@ -112,7 +103,7 @@
   padding: 5px 10px;
   transition: color$timing-function, 250ms;
   &:hover {
-    color: darkgrey;
+    color: $accent-text-color;
   }
 }
 .header_nav--current::after {
@@ -141,7 +132,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: darkgrey;
+    color: $accent-text-color;
   }
 }
 
@@ -179,7 +170,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: darkgrey;
+    color: $accent-text-color;
   }
 }
 .theme-day {
@@ -197,4 +188,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.darkTheme {
+  background-color: black;
+}
+.footer.darkTheme {
+  background-color: rgba(32, 29, 29, 0.393);
+  color: $accent-text-color;
 }
