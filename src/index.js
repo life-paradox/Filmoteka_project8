@@ -3,11 +3,20 @@ import { renderFilms } from './JS/main';
 import { slider } from './JS/slider';
 import { pagination, paginationforQuery } from './JS/pagination';
 import { fetchQueryFilm } from './JS/main';
-import { genres } from './JS/main';
+import { fetchGenres } from './JS/main';
 
-genres();
 
-fetchPopFilms(1).then(pagination);
+function moviesRender(){
+  if (localStorage.getItem('genres')){
+    fetchPopFilms(1).then(pagination);
+  } else {
+    fetchGenres().then(res => {
+      fetchPopFilms(1).then(res => pagination(res));
+    });
+  };
+};
+
+moviesRender();
 
 
 // поиск по ключевому слову
