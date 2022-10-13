@@ -1,8 +1,5 @@
-import {
-  paginationMarkup,
-  paginationMarkupMobile,
-  markupMovies,
-} from './library-markups';
+import { markupMovies } from './library-markups';
+import { paginationMarkup, paginationMarkupMobile } from './pagination-markups';
 import { getFromLocalStorage } from './localStorage';
 
 export { pagination };
@@ -71,7 +68,8 @@ function renderPage(pageNum) {
     behavior: 'smooth',
   });
 
-  window.innerWidth >= 768
+  const width = document.documentElement.clientWidth;
+  width >= 768
     ? getPaginationNumbers(paginationMarkup(currentPage, pageCount))
     : getPaginationNumbers(paginationMarkupMobile(currentPage, pageCount));
   handleActivePageNumber();
