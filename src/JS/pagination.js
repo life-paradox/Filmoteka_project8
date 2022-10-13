@@ -1,7 +1,7 @@
 import { markupMovies } from './index-markups';
 
 import { paginationMarkup, paginationMarkupMobile } from './pagination-markups';
-import { fetchPopFilms, renderFilms } from './main';
+import { fetchPopFilms } from './main';
 
 export { pagination };
 export { currentPage };
