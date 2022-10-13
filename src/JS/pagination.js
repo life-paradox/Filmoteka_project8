@@ -1,7 +1,7 @@
 import { markupMovies } from './index-markups';
 
 import { paginationMarkup, paginationMarkupMobile } from './pagination-markups';
-import { fetchPopFilms, renderFilms } from './main';
+import { fetchPopFilms, renderFilms, fetchQueryFilm } from './main';
 
 export { pagination };
 export { currentPage };
@@ -131,3 +131,34 @@ function handlePageButtonsStatus() {
     enableButton(nextButton);
   }
 }
+
+
+function paginationforQuery(films) {
+  movies = films;
+
+  if (movies.results.length === 0) {
+    paginationNav.classList.add('hidden');
+    return;
+  }
+
+  // paginationNav.classList.remove('hidden');
+  pageCount = Math.ceil(movies.total_results / paginationLimit);
+  renderPage(films);
+
+  prevButton.addEventListener('click', () => {
+    fetchQueryFilm(currentPage - 1).then(renderPage);
+  });
+
+  nextButton.addEventListener('click', () => {
+    fetchQueryFilm(currentPage + 1).then(renderPage);
+  });
+
+  paginationWrapper.addEventListener('click', e => {
+    if (e.target.hasAttribute('page-index')) {
+      fetchQueryFilm(Number(e.target.getAttribute('page-index'))).then(
+        renderPage
+      );
+    }
+  });
+}
+export { paginationforQuery };
