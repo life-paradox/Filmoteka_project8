@@ -1,6 +1,5 @@
 import { API_KEY } from './api-key';
 import onModalEvent from './modal-film';
-import createModal from './modal-film';
 const galleryRef = document.querySelector('.gallery');
 
 // фетч жанров
@@ -80,8 +79,11 @@ function renderFilms(films) {
 }
 galleryRef.addEventListener('click', onModalEvent);
 
+// console.log(evt.target);
+// console.log(evt.target.dataset.id);
+
 export { renderFilms };
 
 //Парсінг жанрів
 const savedGenres = localStorage.getItem('genres');
-const parseGenres = JSON.parse(savedGenres);
+export const parseGenres = JSON.parse(savedGenres);

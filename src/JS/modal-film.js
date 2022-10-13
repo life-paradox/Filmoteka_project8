@@ -1,4 +1,6 @@
-export default function onModalEvent(evt) {
+import { parseGenres } from './main';
+
+export default function onModalEvents(evt) {
   evt.preventDefault();
 
   const film = localStorage.getItem('films');
@@ -12,7 +14,14 @@ export default function onModalEvent(evt) {
     if (Number(evt.target.dataset.id) === element.id) {
       const mk = `<div class = 'backdrop'>
       <div class = 'modal'>
-      <img src = ''/>
+      <button data-modal = "close">
+      <svg id = close-modal class = "close-modal-btn" width = 30 height = 30>
+      <use href = "/sprite.15147c25.svg#close-btn"></use>
+      </svg>
+      </button>
+      <img width = 290 height = 370 src = 'https://image.tmdb.org/t/p/w500${
+        element.poster_path
+      }'/>
       <p class = 'film-votes'>Vote/votes ${element.vote_average.toFixed(1)}/${
         element.vote_count
       }</p>
@@ -24,7 +33,10 @@ export default function onModalEvent(evt) {
 <button> ADD TO QUEUE </button>
 </div>
 </div>`;
-      return document.body.insertAdjacentHTML('afterbegin', mk);
+      document.body.insertAdjacentHTML('afterbegin', mk);
+      const closeModalBtn = document.querySelector('.close-modal-btn');
+      const backdrop = document.querySelector('.backdrop');
+      closeModalBtn.addEventListener('click', e => backdrop.remove());
     }
   });
 }
