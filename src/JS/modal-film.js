@@ -43,6 +43,7 @@ export default function onModalEvents(evt) {
       const closeModalBtn = document.querySelector('[data-modal="close"]');
       const backdrop = document.querySelector('.backdrop');
       backdrop.classList.add('active');
+
       closeModalBtn.addEventListener('click', e =>
         backdrop.classList.remove('active')
       );
