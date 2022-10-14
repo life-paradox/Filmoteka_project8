@@ -1,24 +1,21 @@
 <header>
-  <div class="container header_lib">
-    <ul class="header_nav">
+  <div class="header_lib">
+    <ul class="container header_nav">
       <li class="header_nav--logo">
         <a class="logo" href="./index.html">
-          <img
-            src="./images/favicon.png "
-            width="20"
-            height="20"
-            alt=" logo "
-          />
+          <img src="./images/favicon.png " alt=" logo " />
         </a>
       </li>
-      <li class="header_nav--film is-hidden">
-        <a href="" class="header_nav--link link">Filmoteka </a>
+      <li class="header_nav--film hidden-lib">
+        <a href="./index.html" class="header_nav--filmoteka link">Filmoteka </a>
       </li>
       <li class="header_nav--home">
-        <a class="header_nav--link link" href="">HOME</a>
+        <a class="header_nav--link link" href="./index.html">HOME</a>
       </li>
       <li class="header_nav--lib">
-        <a class="header_nav--link link" href="">MY LIBRARY</a>
+        <a class="header_nav--link header_nav--current link" href=""
+          >MY LIBRARY</a
+        >
       </li>
     </ul>
     <ul class="button_list">
@@ -27,6 +24,13 @@
       </li>
       <li class="button_list-queue">
         <button class="button_queue">QUEUE</button>
+      </li>
+      <li class="">
+        <button class="theme-day">
+          <svg class="theme-day--svg" id="theme-day" width="20px" height="20px">
+            <use href="./images/svg/theme-lib.svg#icon-theme"></use>
+          </svg>
+        </button>
       </li>
     </ul>
   </div>

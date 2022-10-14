@@ -1,45 +1,166 @@
-export function pagination(films) {
+import { markupMovies } from './index-markups';
 
-  const paginationRef = document.querySelector(".pagination");
+import { paginationMarkup, paginationMarkupMobile } from './pagination-markups';
+
+import { fetchPopFilms, fetchQueryFilm } from './main';
 
 
-  const totalPages = films.total_pages;
-  const currentPage = films.page;
-  const nextPage = currentPage + 1;
-  const prevPage = currentPage - 1;
+export { pagination };
+export { currentPage };
 
-  if (currentPage === 1) {
-    const markup = `<button type="button" class="prevPage">&#10229;</button>
-    <button type="button" class="curPage">1</button>
-    <button type="button" class="nextPage">2</button>
-    <button type="button" class="nextPage+2">3</button>
-    <button type="button" class="nextPage+3">4</button>
-    <button type="button" class="nextPage+4">5</button>
-    <button type="button" class="nextPage+5">6</button>
-    <button type="button" class="nextPage+6">7</button>
-    <span>&#8728;&#8728;&#8728;</span>
-    <button type="button" class="maxPage">${totalPages}</button>
-    <button type="button" class="nextPage">&#10230;</button>`;
-    paginationRef.innerHTML = markup;
+const galleryRef = document.querySelector('.gallery');
+const paginationNav = document.querySelector('.pagination__wrapper');
+const paginationWrapper = document.querySelector('.pagination__pages');
+const nextButton = document.querySelector('#next-button');
+const prevButton = document.querySelector('#prev-button');
+
+let currentPage;
+let pageCount;
+const paginationLimit = 20;
+let movies;
+
+//Render and pagination
+function pagination(films) {
+  movies = films;
+
+  if (movies.results.length === 0) {
+    paginationNav.classList.add('hidden');
+    return;
   }
-  
-  if (currentPage === 2) {
-    const markup = `<button type="button" class="prevPage">&#10229;</button>
-    <button type="button" class="prevPage">1</button>
-    <button type="button" class="curPage">2</button>
-    <button type="button" class="nextPage">3</button>
-    <button type="button" class="nextPage+2">4</button>
-    <button type="button" class="nextPage+3">5</button>
-    <button type="button" class="nextPage+4">6</button>
-    <button type="button" class="nextPage+5">7</button>
-    <span>&#8728;&#8728;&#8728;</span>
-    <button type="button" class="maxPage">${totalPages}</button>
-    <button type="button" class="nextPage">&#10230;</button>`;
-    paginationRef.innerHTML = markup;
-  };
 
+  // paginationNav.classList.remove('hidden');
+  pageCount = Math.ceil(movies.total_results / paginationLimit);
+  renderPage(films);
 
+  prevButton.addEventListener('click', () => {
+    fetchPopFilms(currentPage - 1).then(renderPage);
+  });
 
+  nextButton.addEventListener('click', () => {
+    fetchPopFilms(currentPage + 1).then(renderPage);
+  });
 
-
+  paginationWrapper.addEventListener('click', e => {
+    if (e.target.hasAttribute('page-index')) {
+      fetchPopFilms(Number(e.target.getAttribute('page-index'))).then(
+        renderPage
+      );
+    }
+  });
 }
+
+function renderPage(films) {
+  currentPage = films.page;
+  const currentMovies = films.results;
+  clearContainer(galleryRef);
+  insertListItems(markupMovies(films));
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+
+  const width = document.documentElement.clientWidth;
+  width >= 768
+    ? getPaginationNumbers(paginationMarkup(currentPage, pageCount))
+    : getPaginationNumbers(paginationMarkupMobile(currentPage, pageCount));
+  handleActivePageNumber();
+  handlePageButtonsStatus();
+}
+
+function getPaginationNumbers(items) {
+  clearContainer(paginationWrapper);
+
+  const pages = items.map(item => {
+    if (typeof item === 'number') {
+      const pageNumber = document.createElement('button');
+      pageNumber.className = 'pagination__number';
+      pageNumber.innerHTML = item;
+      pageNumber.setAttribute('page-index', item);
+      pageNumber.setAttribute('aria-label', 'Page ' + item);
+      return pageNumber;
+    }
+
+    if (typeof item === 'string') {
+      const dots = document.createElement('span');
+      dots.innerHTML = item;
+      return dots;
+    }
+  });
+  paginationWrapper.append(...pages);
+}
+
+function insertListItems(items) {
+  galleryRef.insertAdjacentHTML('beforeend', items);
+}
+
+function clearContainer(container) {
+  container.innerHTML = '';
+}
+
+// Handle pagination buttons
+
+function handleActivePageNumber() {
+  document.querySelectorAll('.pagination__number').forEach(button => {
+    button.classList.remove('active');
+
+    const pageIndex = Number(button.getAttribute('page-index'));
+
+    if (pageIndex === currentPage) {
+      button.classList.add('active');
+    }
+  });
+}
+
+function disableButton(button) {
+  button.classList.add('hidden');
+}
+
+function enableButton(button) {
+  button.classList.remove('hidden');
+}
+
+function handlePageButtonsStatus() {
+  if (currentPage === 1) {
+    disableButton(prevButton);
+  } else {
+    enableButton(prevButton);
+  }
+
+  if (pageCount === currentPage) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
+}
+
+
+function paginationforQuery(films) {
+  movies = films;
+
+  if (movies.results.length === 0) {
+    paginationNav.classList.add('hidden');
+    return;
+  }
+
+  // paginationNav.classList.remove('hidden');
+  pageCount = Math.ceil(movies.total_results / paginationLimit);
+  renderPage(films);
+
+  prevButton.addEventListener('click', () => {
+    fetchQueryFilm(currentPage - 1).then(renderPage);
+  });
+
+  nextButton.addEventListener('click', () => {
+    fetchQueryFilm(currentPage + 1).then(renderPage);
+  });
+
+  paginationWrapper.addEventListener('click', e => {
+    if (e.target.hasAttribute('page-index')) {
+      fetchQueryFilm(Number(e.target.getAttribute('page-index'))).then(
+        renderPage
+      );
+    }
+  });
+}
+export { paginationforQuery };

@@ -1,8 +1,33 @@
-<section class="container">
-  <ul class="gallery">
+<main class="main">
 
-  </ul>
+  <section class="pagination">
+        <div class="preloader" id="preloader">
+          <div class="circles-group">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+    <div class="container">
 
-  <div class="pagination">
-  </div>
-</section>
+      <ul class="gallery" aria-live="polite"></ul>
+      <nav class="pagination__wrapper">
+        <button class="pagination__button" id="prev-button" title="Previous page" aria-label="Previous page">
+          <svg class="pagination__arrow">
+            <use href="./images/svg/sprite.svg#arrow-left"></use>
+          </svg>
+        </button>
+
+        <div class="pagination__pages"></div>
+
+        <button class="pagination__button" id="next-button" title="Next page" aria-label="Next page">
+          <svg class="pagination__arrow">
+            <use href="./images/svg/sprite.svg#arrow-right"></use>
+          </svg>
+        </button>
+      </nav>
+    <div class="btn-up btn-up_hide"></div>
+    </div>
+  </section>
+</main>
