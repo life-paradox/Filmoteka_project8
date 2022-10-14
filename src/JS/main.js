@@ -45,6 +45,7 @@ const fetchQueryFilm = async query => {
 export { fetchQueryFilm };
 
 // Рендер карточек
+
 function renderFilms(films) {
   const markup = films.results.map(
     ({
@@ -56,10 +57,12 @@ function renderFilms(films) {
       first_air_date,
       year = release_date || first_air_date || ' - ',
     }) => {
+      const savedGenres = localStorage.getItem('genres');
+      const parseGenres = JSON.parse(savedGenres);
       const genreName = genre_ids
         .map(element => parseGenres.genres.find(genre => genre.id === element))
         .map(element => element.name)
-        .join(' ');
+        .join(',');
 
       return `<li class="gallery__item">
                 <a href = ''>
@@ -85,5 +88,3 @@ galleryRef.addEventListener('click', onModalEvent);
 export { renderFilms };
 
 //Парсінг жанрів
-const savedGenres = localStorage.getItem('genres');
-export const parseGenres = JSON.parse(savedGenres);
