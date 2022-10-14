@@ -3,7 +3,12 @@ import { renderFilms } from './JS/main';
 import { slider } from './JS/slider';
 import { pagination, paginationforQuery } from './JS/pagination';
 import { fetchQueryFilm } from './JS/main';
+
+import './JS/themeRender';
+
+
 import { fetchGenres } from './JS/main';
+
 
 
 function moviesRender(){
@@ -16,7 +21,9 @@ function moviesRender(){
   };
 };
 
+
 moviesRender();
+
 
 
 // поиск по ключевому слову
@@ -35,7 +42,6 @@ function onSearch(e) {
 
 slider();
 
-
 // SCROLL
 const progressBar = document.querySelector('.progress-bar');
 window.addEventListener('scroll', moveProgressBar);
@@ -49,4 +55,3 @@ function moveProgressBar() {
   const width_progress_line = (windowScroll / windowHeight) * 100;
   progressBar.style.width = width_progress_line + '%';
 }
-
