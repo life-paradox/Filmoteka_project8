@@ -53,15 +53,15 @@ export default function onModalEvents(evt) {
 
     addToWatch.addEventListener('click', e => {
       if (Number(evt.target.dataset.id) === element.id) {
-        // console.log(JSON.stringify(a)),
         arrayOfFilms.push(element),
           (filteredArrayOfFilms = new Set(arrayOfFilms)),
           localStorage.setItem(
-            'Watched films ',
+            'watchedFilms',
             JSON.stringify([...filteredArrayOfFilms])
           );
       }
     });
+    const addToQueue = document.querySelector('.queued-films-btn');
+    console.log(addToQueue);
   });
-  console.log(evt.target);
 }
