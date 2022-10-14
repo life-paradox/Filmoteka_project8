@@ -1,10 +1,13 @@
+import '../sass/components/modal.scss';
+
 export default class Modal {
-  constructor(root, modalOpen) {
-    this.modal = root;
-    this.modalBody = root.querySelector(`[data-modal-body]`);
-    this.modalClose = root.querySelector(`[data-modal-close]`);
-    this.modalOpen = modalOpen;
-    this.classHidden = `is-hidden`;
+  constructor(component) {
+    this.classHidden = `is-modal-hidden`;
+
+    this.removeModal();
+    this.modal = this.createModal(component);
+    this.modalBody = this.modal.querySelector(`[data-modal-body]`);
+    this.modalClose = this.modal.querySelector(`[data-modal-close]`);
 
     this.show = this.show.bind(this);
     this.close = this.close.bind(this);
@@ -12,30 +15,49 @@ export default class Modal {
     this.processClosedModalEvents = this.processClosedModalEvents.bind(this);
     this.handleDocumentKeyPressed = this.handleDocumentKeyPressed.bind(this);
     this.handleOutsideModalClick = this.handleOutsideModalClick.bind(this);
-    this.handleModalOpenClick = this.handleModalOpenClick.bind(this);
 
-    this.processClosedModalEvents();
+    setTimeout(this.show, 250);
+  }
+
+  removeModal() {
+    const modal = document.querySelector(`[data-modal]`);
+    if (modal) {
+      modal.remove();
+    }
+  }
+
+  createModal(component) {
+    const modal = document.createElement(`div`);
+    const modalBody = document.createElement(`div`);
+    const modalCloseBtn = document.createElement(`button`);
+
+    modal.setAttribute(`data-modal`, ``);
+    modal.classList.add(this.classHidden);
+    modalBody.setAttribute(`data-modal-body`, ``);
+    modalCloseBtn.setAttribute(`data-modal-close`, ``);
+
+    modal.appendChild(modalCloseBtn);
+    modal.appendChild(modalBody);
+    modalBody.appendChild(component);
+
+    document.body.appendChild(modal);
+    return modal;
   }
 
   processOpenedModalEvents() {
     document.addEventListener(`keydown`, this.handleDocumentKeyPressed);
     document.addEventListener(`click`, this.handleOutsideModalClick);
     this.modalClose.addEventListener(`click`, this.close);
-    this.modalOpen.removeEventListener(`click`, this.handleModalOpenClick);
   }
 
   processClosedModalEvents() {
     document.removeEventListener(`keydown`, this.handleDocumentKeyPressed);
     document.removeEventListener(`click`, this.handleOutsideModalClick);
-    this.modalClose.removeEventListener(`click`, this.close);
-    this.modalOpen.addEventListener(`click`, this.handleModalOpenClick);
   }
 
   show() {
     const classList = this.modal.classList;
-    if (classList.contains(this.classHidden)) {
-      classList.remove(this.classHidden);
-    }
+    classList.remove(this.classHidden);
 
     this.processOpenedModalEvents();
   }
@@ -45,12 +67,8 @@ export default class Modal {
     if (!classList.contains(this.classHidden)) {
       classList.add(this.classHidden);
     }
-    this.processClosedModalEvents();
-  }
 
-  handleModalOpenClick(evt) {
-    evt.stopPropagation();
-    this.show();
+    this.processClosedModalEvents();
   }
 
   handleDocumentKeyPressed(evt) {
@@ -60,8 +78,7 @@ export default class Modal {
   }
 
   handleOutsideModalClick(evt) {
-    if (!this.modalBody.contains(evt.target)) {
-      evt.stopPropagation();
+    if (!this.modal.contains(evt.target)) {
       this.close();
     }
   }
