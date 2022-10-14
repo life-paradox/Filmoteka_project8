@@ -7,6 +7,7 @@ function markupMovies(films) {
     .map(
       ({
         title,
+        id,
         poster_path,
         genre_ids,
         release_date,
@@ -24,8 +25,8 @@ function markupMovies(films) {
           genreOutput = genreName.map(element => element.name);
         }
         return `<li class="gallery__item">
-            <a class="gallery__link" href="">
-                <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
+            <a class="gallery__link"  href="">
+                <img class="gallery__image" data-id=${id} src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
             </a>
             <div class="gallery__info">
                 <p class="gallery__title cut-text">${title}</p>
