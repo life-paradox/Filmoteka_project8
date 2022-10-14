@@ -1,13 +1,15 @@
 import '../sass/components/modal.scss';
 
+const TIMEOUT = 250;
+
 export default class Modal {
   constructor(component) {
     this.classHidden = `is-modal-hidden`;
 
-    this.removeModal();
-    this.modal = this.createModal(component);
+    this.modal = document.querySelector(`[data-modal]`) || this.createModal();
     this.modalBody = this.modal.querySelector(`[data-modal-body]`);
     this.modalClose = this.modal.querySelector(`[data-modal-close]`);
+    this.close();
 
     this.show = this.show.bind(this);
     this.close = this.close.bind(this);
@@ -16,29 +18,23 @@ export default class Modal {
     this.handleDocumentKeyPressed = this.handleDocumentKeyPressed.bind(this);
     this.handleOutsideModalClick = this.handleOutsideModalClick.bind(this);
 
-    setTimeout(this.show, 250);
+    setTimeout(() => {
+      this.modalBody.innerHTML = component.outerHTML;
+      this.show();
+    }, TIMEOUT);
   }
 
-  removeModal() {
-    const modal = document.querySelector(`[data-modal]`);
-    if (modal) {
-      modal.remove();
-    }
-  }
-
-  createModal(component) {
+  createModal() {
     const modal = document.createElement(`div`);
     const modalBody = document.createElement(`div`);
     const modalCloseBtn = document.createElement(`button`);
 
     modal.setAttribute(`data-modal`, ``);
-    modal.classList.add(this.classHidden);
     modalBody.setAttribute(`data-modal-body`, ``);
     modalCloseBtn.setAttribute(`data-modal-close`, ``);
 
     modal.appendChild(modalCloseBtn);
     modal.appendChild(modalBody);
-    modalBody.appendChild(component);
 
     document.body.appendChild(modal);
     return modal;
