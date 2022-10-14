@@ -1,9 +1,8 @@
 import { API_KEY } from './api-key';
+import onModalEvents from './modal-film';
 import { currentPage } from './pagination';
-import onModalEvent from './modal-film';
 
 const galleryRef = document.querySelector('.gallery');
-import createModal from './modal-film';
 import { searchData } from '../index';
 // фетч жанров
 
@@ -83,14 +82,14 @@ function renderFilms(films) {
         .join(',');
 
       return `<li class="gallery__item">
-                <a href = ''>
-                <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" data-id="${id}" alt="" loading="lazy">
+            <a href = ''>
+                <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" data-id=${id} alt="" loading="lazy">
                  <div class="gallery__info">
+            </a>
                 <p class="gallery__title">${title}</p>
                 <p class="gallery__genre">${genreName}</p>     
                 <p class="gallery__year">${year.slice(0, 4)}</p>
             </div>
-            </a>
           </li>`;
     }
   );
@@ -98,7 +97,6 @@ function renderFilms(films) {
   galleryRef.innerHTML = markup;
   return films;
 }
-galleryRef.addEventListener('click', onModalEvent);
 
 // console.log(evt.target);
 // console.log(evt.target.dataset.id);
@@ -106,7 +104,7 @@ galleryRef.addEventListener('click', onModalEvent);
 export { renderFilms };
 
 //Парсінг жанрів
-galleryRef.addEventListener('click', onModalEvent);
+galleryRef.addEventListener('click', onModalEvents);
 
 // export { renderFilms };
 

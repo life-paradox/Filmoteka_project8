@@ -56,10 +56,11 @@ export default function onModalEvents(evt) {
         arrayOfFilms.push(element),
           (filteredArrayOfFilms = new Set(arrayOfFilms)),
           localStorage.setItem(
-            'Watched films',
+            'Watched films ',
             JSON.stringify([...filteredArrayOfFilms])
           );
       }
     });
   });
+  console.log(evt.target);
 }
