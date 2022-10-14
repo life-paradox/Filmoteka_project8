@@ -70,14 +70,6 @@
   }
 }
 
-@include mq(tablet) {
-  height: 455px;
-  background-image: url(/src/images/index-main/index-main-tablet.jpg);
-  @include mq(retina) {
-    background-image: url(/src/images/index-main/index-main-tablet2x.jpg);
-  }
-}
-
 .gallery__image {
   border-radius: 5px;
   width: 100%;
