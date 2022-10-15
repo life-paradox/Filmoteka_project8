@@ -1,6 +1,8 @@
 const themeRenderFooter = document.querySelector('.footer');
 const titleRenderTheme = document.querySelector('body');
 const bgButtonToogl = document.querySelector('.theme-day');
+const gallaryTitleBlack = document.querySelector('.gallery__title');
+console.log(gallaryTitleBlack);
 
 const checkBox = document.getElementById('myCheck');
 
@@ -19,9 +21,11 @@ function addDarkTheme() {
     if (localStorage.getItem('theme') === 'dark') {
       titleRenderTheme.classList.add('darkTheme');
       themeRenderFooter.classList.add('darkTheme');
+      gallaryTitleBlack.classList.add('darkTheme');
     } else {
       titleRenderTheme.classList.remove('darkTheme');
       themeRenderFooter.classList.remove('darkTheme');
+      gallaryTitleBlack.classList.remove('darkTheme');
     }
   } catch (err) {}
 }
