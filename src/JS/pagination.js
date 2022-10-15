@@ -23,7 +23,7 @@ let movies;
 function pagination(films) {
   movies = films;
 
-  if (movies.results.length === 0) {
+  if (!movies.results.length) {
     paginationNav.classList.add('hidden');
     return;
   }
@@ -138,7 +138,7 @@ function handlePageButtonsStatus() {
 function paginationforQuery(films) {
   movies = films;
 
-  if (movies.results.length === 0) {
+  if (!movies.results.length) {
     paginationNav.classList.add('hidden');
     return;
   }
