@@ -1,16 +1,16 @@
 .modal-footer {
-  background-color: $bgc-footer;
+  // background-color: $bgc-footer;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
 
-  display: block;
+  // display: block;
   max-height: 95vh;
   width: 280px;
 
-  padding: 0 0 24px 0;
+  // padding: 0 0 24px 0;
 
   @include mq(tablet) {
     max-height: 90vh;
@@ -26,32 +26,30 @@
   text-align: center;
   font-size: 22px;
   line-height: 1.8;
-
-  background-color: $accent-color;
 }
 
-.modal-footer__close-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+// .modal-footer__close-btn {
+//   position: absolute;
+//   top: 5px;
+//   right: 5px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border-radius: 50%;
-  border-style: none;
+//   width: 30px;
+//   height: 30px;
+//   padding: 0;
+//   border-radius: 50%;
+//   border-style: none;
 
-  background-color: $accent-color;
+//   background-color: $accent-color;
 
-  &:hover,
-  :focus {
-    background-color: $bgc-footer;
-  }
-}
+//   &:hover,
+//   :focus {
+//     background-color: $bgc-footer;
+//   }
+// }
 
 .close-btn__icon {
   width: 24px;

@@ -48,9 +48,17 @@ function moveProgressBar() {
   progressBar.style.width = width_progress_line + '%';
 }
 
-slider();
-
 document.querySelector('#goit-students').addEventListener('click', e => {
   e.preventDefault();
-  new Modal(document.querySelector('.modal-footer'));
+
+  const div = document.createElement('div');
+  const modal = document.querySelector('.modal-footer');
+  div.innerHTML = modal.outerHTML;
+  div.querySelector('.modal-footer').classList.remove('is-hidden');
+
+  new Modal(div, modalWindow => {
+    slider(modalWindow);
+  });
+
+  setTimeout(() => {}, 300);
 });
