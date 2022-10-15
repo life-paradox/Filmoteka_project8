@@ -174,29 +174,20 @@
     color: $hover-color;
   }
 }
-// .theme-day {
-//   position: absolute;
-//   right: 10px;
-//   top: 230px;
-//   transition: color$timing-function, 250ms;
-//   border-radius: 10px;
-//   &:hover {
-//     background-color: $accent-text-color;
-//   }
-// }
-// .theme-day--svg {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
 
 .darkTheme {
-  background-color: $theme-color;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9727241238292192) 11%,
+    rgba(66, 0, 20, 1) 50%,
+    rgba(0, 0, 0, 0.9783263647255778) 93%
+  );
 }
-// .footer.darkTheme {
-//   background-color: $theme-color;
-//   color: $accent-text-color;
-// }
+.footer.darkTheme {
+  background-color: $theme-color;
+  color: $accent-text-color;
+}
 // .dark {
 //   background-color: $accent-text-color;
 // }
