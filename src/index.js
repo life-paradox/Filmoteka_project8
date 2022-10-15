@@ -62,6 +62,4 @@ document.querySelector('#goit-students').addEventListener('click', e => {
   new Modal(div, modalWindow => {
     slider(modalWindow);
   });
-
-  // setTimeout(() => {}, 300);
 });
