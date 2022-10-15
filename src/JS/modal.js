@@ -6,7 +6,7 @@ export default class Modal {
   constructor(component, onOpen) {
     this.classHidden = `is-modal-hidden`;
 
-    this.onOpen = onOpen();
+    this.onOpen = onOpen;
     this.modal = document.querySelector(`[data-modal]`) || this.createModal();
     this.modalBody = this.modal.querySelector(`[data-modal-body]`);
     this.modalClose = this.modal.querySelector(`[data-modal-close]`);
@@ -57,7 +57,7 @@ export default class Modal {
     classList.remove(this.classHidden);
 
     this.processOpenedModalEvents();
-    onOpen(this.modal);
+    this.onOpen(this.modal);
   }
 
   close() {
