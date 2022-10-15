@@ -24,5 +24,3 @@ queueButton.addEventListener('click', e => {
   queueButton.classList.remove('button_watched');
   watchedButton.classList.add('button_watched');
 });
-
-slider();

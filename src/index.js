@@ -5,6 +5,9 @@ import Modal from './JS/modal';
 
 import { pagination, paginationforQuery } from './JS/pagination';
 import { fetchQueryFilm } from './JS/main';
+
+import './JS/themeRender';
+
 import { fetchGenres } from './JS/main';
 
 function moviesRender() {
