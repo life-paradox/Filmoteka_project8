@@ -191,10 +191,10 @@
 }
 
 .darkTheme {
-  background-color: black;
+  background-color: $theme-color;
 }
 .footer.darkTheme {
-  background-color: rgb(0, 0, 0);
+  background-color: $theme-color;
   color: $accent-text-color;
 }
 .dark {
