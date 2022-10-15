@@ -70,9 +70,9 @@
     }
   }
 }
-.logo > img {
-  width: 30px;
-}
+// .logo > img {
+//   width: 30px;
+// }
 .header_nav {
   display: flex;
   justify-content: center;
@@ -104,7 +104,7 @@
   padding: 5px 10px;
   transition: color$timing-function, 250ms;
   &:hover {
-    color: $accent-text-color;
+    color: darkgray;
   }
 }
 .header_nav--current::after {
@@ -133,7 +133,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: $accent-text-color;
+    color: darkgray;
   }
 }
 
@@ -171,7 +171,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: $accent-text-color;
+    color: darkgray;
   }
 }
 .theme-day {
