@@ -7,11 +7,13 @@
   width: 100vw;
   height: 100vh;
   background-color: #0000004a;
-  transition: background-color 0.5s $timing-function;
+  visibility: visible;
+  transition: background-color 0.5s $timing-function,
+    visibility 0.5s $timing-function;
 
   &.is-modal-hidden {
-    top: -100%;
     background-color: transparent;
+    visibility: hidden;
   }
 
   &.is-modal-hidden [data-modal] {
