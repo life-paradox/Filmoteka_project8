@@ -31,7 +31,7 @@ formRef.addEventListener('submit', onSearch);
 function onSearch(e) {
   e.preventDefault();
   searchData = formRef.elements.searchQuery.value.trim();
-  console.log(searchData);
+  console.log('search', searchData);
   if (searchData !== '') {
     fetchQueryFilm(1, searchData).then(paginationforQuery);
   }
