@@ -30,7 +30,7 @@ function markupMovies(films) {
 
         return `<li class="gallery__item">
             <a class="gallery__link"  href="">
-                <img class="gallery__image" data-id=${id} src="${defaultImg}" alt="" loading="lazy">
+                <img class="gallery__image" data-id=${id} src="${defaultImg}" alt="${title}" loading="lazy">
             </a>
             <div class="gallery__info">
                 <p class="gallery__title cut-text">${title}</p>
