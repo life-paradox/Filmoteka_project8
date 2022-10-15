@@ -23,7 +23,7 @@
     line-height: 1.333;
   }
 
-  &__number.active {
+  &__number.activePage {
     color: #fff;
     background: $accent-text-color;
   }
@@ -34,6 +34,7 @@
   }
 
   &__pages span {
+    
     cursor: default;
     -ms-user-select: none;
     user-select: none;
