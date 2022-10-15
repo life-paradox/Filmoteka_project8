@@ -1,12 +1,13 @@
+import { pagination, paginationforQuery } from './JS/pagination';
 import { fetchPopFilms, renderFilms } from './JS/main';
 import { renderFilms } from './JS/main';
+
+import { theme } from './JS/themeRender';
+
 import { slider } from './JS/slider';
 import Modal from './JS/modal';
 
-import { pagination, paginationforQuery } from './JS/pagination';
 import { fetchQueryFilm } from './JS/main';
-
-import './JS/themeRender';
 
 import { fetchGenres } from './JS/main';
 

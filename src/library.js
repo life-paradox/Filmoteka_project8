@@ -1,8 +1,9 @@
 import { pagination } from './JS/library-main';
 import { getFromLocalStorage } from './JS/localStorage';
 
-import { slider } from './JS/slider';
 import { theme } from './JS/themeRender';
+
+import { slider } from './JS/slider';
 import Modal from './JS/modal';
 
 const watchedButton = document.querySelector('.button_watched');
@@ -18,7 +19,7 @@ const watchedMovies = () => {
   watchedButton.classList.remove('button_watched');
   queueButton.classList.add('button_watched');
   localStorage.setItem('page', watchedKey);
-}
+};
 
 const queuedMovies = () => {
   pagination(queuedKey);
@@ -27,15 +28,13 @@ const queuedMovies = () => {
   queueButton.classList.remove('button_watched');
   watchedButton.classList.add('button_watched');
   localStorage.setItem('page', queuedKey);
-}
+};
 
 window.addEventListener('load', () => {
   const data = localStorage.getItem('page');
   data === watchedKey ? watchedMovies() : queuedMovies();
-}
-    );
+});
 
-watchedButton.addEventListener('click', watchedMovies
-);
+watchedButton.addEventListener('click', watchedMovies);
 
 queueButton.addEventListener('click', queuedMovies);
