@@ -1,32 +1,15 @@
-import { API_KEY } from './api-key';
+import { API_KEY } from './const/api-key';
 import onModalEvents from './modal-film';
 import { currentPage } from './pagination';
 
-const galleryRef = document.querySelector('.gallery');
 import { searchData } from '../index';
-// фетч жанров
 
-// https://api.themoviedb.org/3/genre/movie/list?api_key=861782ee1fc6aacf939bc06e51306075&language=uk-UA
-// function genres() {
-//   if (localStorage.getItem('genres')) {
-//     return;
-//   } else {
-//     const fetchGenres = async () => {
-//       const response = await fetch(
-//         `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=uk-UA`
-//       );
-//       const genres = await response.json();
-//       localStorage.setItem('genres', JSON.stringify(genres));
-//     };
-//     fetchGenres();
-
-//   }
-// }
+const galleryRef = document.querySelector('.gallery');
 
 function fetchGenres() {
   return Promise.resolve(
     fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=uk-UA`
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
     )
       .then(res => res.json())
       .then(genres => {
@@ -98,19 +81,10 @@ function renderFilms(films) {
   return films;
 }
 
-// console.log(evt.target);
-// console.log(evt.target.dataset.id);
-
 export { renderFilms };
 
 //Парсінг жанрів
 galleryRef.addEventListener('click', onModalEvents);
-
-// export { renderFilms };
-
-// const savedGenres = localStorage.getItem("genres");
-// const parseGenres = JSON.parse(savedGenres);
-// console.log(parseGenres.genres);
 
 //Спіннер
 const preloader = document.querySelector('#preloader');

@@ -20,7 +20,7 @@ function markupMovies(films) {
         let genreOutput;
         if (genre_ids.length > 3) {
           genreOutput = genreName.map(element => element.name).slice(0, 2);
-          genreOutput.push('інші');
+          genreOutput.push('Other');
         } else {
           genreOutput = genreName.map(element => element.name);
         }
