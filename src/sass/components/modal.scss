@@ -1,5 +1,25 @@
 @import '../utils/variables';
 
+[data-modal-backdrop] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000004a;
+  transition: background-color 0.5s $timing-function;
+
+  &.is-modal-hidden {
+    top: -100%;
+    background-color: transparent;
+  }
+
+  &.is-modal-hidden [data-modal] {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
 [data-modal] {
   position: fixed;
   top: 50%;
@@ -12,11 +32,6 @@
   transition-duration: 0.5s;
   transition-timing-function: $timing-function;
   opacity: 1;
-
-  &.is-modal-hidden {
-    top: -100%;
-    opacity: 0;
-  }
 }
 
 [data-modal-close] {

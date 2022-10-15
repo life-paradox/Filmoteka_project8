@@ -7,7 +7,9 @@ export default class Modal {
     this.classHidden = `is-modal-hidden`;
 
     this.onOpen = onOpen;
-    this.modal = document.querySelector(`[data-modal]`) || this.createModal();
+    this.backdrop =
+      document.querySelector(`[data-modal-backdrop]`) || this.createModal();
+    this.modal = this.backdrop.querySelector(`[data-modal]`);
     this.modalBody = this.modal.querySelector(`[data-modal-body]`);
     this.modalClose = this.modal.querySelector(`[data-modal-close]`);
     this.close();
@@ -26,19 +28,22 @@ export default class Modal {
   }
 
   createModal() {
+    const backdrop = document.createElement(`div`);
     const modal = document.createElement(`div`);
     const modalBody = document.createElement(`div`);
     const modalCloseBtn = document.createElement(`button`);
 
+    backdrop.setAttribute(`data-modal-backdrop`, ``);
     modal.setAttribute(`data-modal`, ``);
     modalBody.setAttribute(`data-modal-body`, ``);
     modalCloseBtn.setAttribute(`data-modal-close`, ``);
 
+    backdrop.appendChild(modal);
     modal.appendChild(modalCloseBtn);
     modal.appendChild(modalBody);
 
-    document.body.appendChild(modal);
-    return modal;
+    document.body.appendChild(backdrop);
+    return backdrop;
   }
 
   processOpenedModalEvents() {
@@ -53,15 +58,18 @@ export default class Modal {
   }
 
   show() {
-    const classList = this.modal.classList;
+    const classList = this.backdrop.classList;
     classList.remove(this.classHidden);
 
     this.processOpenedModalEvents();
-    this.onOpen(this.modal);
+
+    if (this.onOpen) {
+      this.onOpen(this.modal);
+    }
   }
 
   close() {
-    const classList = this.modal.classList;
+    const classList = this.backdrop.classList;
     if (!classList.contains(this.classHidden)) {
       classList.add(this.classHidden);
     }

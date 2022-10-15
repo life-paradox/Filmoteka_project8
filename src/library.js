@@ -1,4 +1,5 @@
 import { pagination } from './JS/library-main';
+import { getFromLocalStorage } from './JS/localStorage';
 
 import { slider } from './JS/slider';
 import { theme } from './JS/themeRender';
@@ -7,20 +8,34 @@ import Modal from './JS/modal';
 const watchedButton = document.querySelector('.button_watched');
 const queueButton = document.querySelector('.button_queue');
 
-window.addEventListener('load', pagination('queuedFilms'));
+const watchedKey = 'watchedFilms';
+const queuedKey = 'queuedFilms';
 
-watchedButton.addEventListener('click', e => {
-  pagination('watchedFilms');
+const watchedMovies = () => {
+  pagination(watchedKey);
   queueButton.classList.remove('button_queue');
   watchedButton.classList.add('button_queue');
   watchedButton.classList.remove('button_watched');
   queueButton.classList.add('button_watched');
-});
+  localStorage.setItem('page', watchedKey);
+}
 
-queueButton.addEventListener('click', e => {
-  pagination('queuedFilms');
+const queuedMovies = () => {
+  pagination(queuedKey);
   watchedButton.classList.remove('button_queue');
   queueButton.classList.add('button_queue');
   queueButton.classList.remove('button_watched');
   watchedButton.classList.add('button_watched');
-});
+  localStorage.setItem('page', queuedKey);
+}
+
+window.addEventListener('load', () => {
+  const data = localStorage.getItem('page');
+  data === watchedKey ? watchedMovies() : queuedMovies();
+}
+    );
+
+watchedButton.addEventListener('click', watchedMovies
+);
+
+queueButton.addEventListener('click', queuedMovies);
