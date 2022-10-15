@@ -7,10 +7,10 @@ import Modal from './JS/modal';
 const watchedButton = document.querySelector('.button_watched');
 const queueButton = document.querySelector('.button_queue');
 
-window.addEventListener('load', pagination('QUEUE'));
+window.addEventListener('load', pagination('queuedFilms'));
 
 watchedButton.addEventListener('click', e => {
-  pagination(e.target.textContent);
+  pagination('watchedFilms');
   queueButton.classList.remove('button_queue');
   watchedButton.classList.add('button_queue');
   watchedButton.classList.remove('button_watched');
@@ -18,7 +18,7 @@ watchedButton.addEventListener('click', e => {
 });
 
 queueButton.addEventListener('click', e => {
-  pagination(e.target.textContent);
+  pagination('queuedFilms');
   watchedButton.classList.remove('button_queue');
   queueButton.classList.add('button_queue');
   queueButton.classList.remove('button_watched');

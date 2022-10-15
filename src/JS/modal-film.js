@@ -2,8 +2,11 @@ const film = localStorage.getItem('films');
 const parsedFilms = JSON.parse(film);
 const savedGenres = localStorage.getItem('genres');
 const parseGenres = JSON.parse(savedGenres);
-let arrayOfFilms = [];
-let filteredArrayOfFilms = [];
+
+let arrayOfWatchedFilms = [];
+let filteredArrayOfWatchedFilms = [];
+let arrayOfQueuedFilms = [];
+let filteredArrayOfQueuedFilms = [];
 
 const modalElementsRefs = {
   filmImage: document.querySelector('.film-image'),
@@ -40,9 +43,11 @@ export default function onModalEvents(evt) {
       originalTitle.textContent = `${element.original_title}`;
       about.textContent = `${element.overview}`;
       genre.textContent = `${genreName}`;
+
       const closeModalBtn = document.querySelector('[data-modal="close"]');
       const backdrop = document.querySelector('.backdrop');
       backdrop.classList.add('active');
+
       closeModalBtn.addEventListener('click', e =>
         backdrop.classList.remove('active')
       );
@@ -52,15 +57,24 @@ export default function onModalEvents(evt) {
 
     addToWatch.addEventListener('click', e => {
       if (Number(evt.target.dataset.id) === element.id) {
-        // console.log(JSON.stringify(a)),
-        arrayOfFilms.push(element),
-          (filteredArrayOfFilms = new Set(arrayOfFilms)),
+        arrayOfWatchedFilms.push(element),
+          (filteredArrayOfWatchedFilms = new Set(arrayOfWatchedFilms)),
           localStorage.setItem(
-            'Watched films ',
-            JSON.stringify([...filteredArrayOfFilms])
+            'watchedFilms',
+            JSON.stringify([...filteredArrayOfWatchedFilms])
+          );
+      }
+    });
+    const addToQueue = document.querySelector('.queued-films-btn');
+    addToQueue.addEventListener('click', e => {
+      if (Number(evt.target.dataset.id) === element.id) {
+        arrayOfQueuedFilms.push(element),
+          (filteredArrayOfQueuedFilms = new Set(arrayOfQueuedFilms)),
+          localStorage.setItem(
+            'queuedFilms',
+            JSON.stringify([...filteredArrayOfQueuedFilms])
           );
       }
     });
   });
-  console.log(evt.target);
 }

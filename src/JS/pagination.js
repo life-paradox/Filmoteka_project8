@@ -102,12 +102,12 @@ function clearContainer(container) {
 
 function handleActivePageNumber() {
   document.querySelectorAll('.pagination__number').forEach(button => {
-    button.classList.remove('active');
+    button.classList.remove('activePage');
 
     const pageIndex = Number(button.getAttribute('page-index'));
 
     if (pageIndex === currentPage) {
-      button.classList.add('active');
+      button.classList.add('activePage');
     }
   });
 }

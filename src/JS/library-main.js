@@ -12,7 +12,7 @@ const prevButton = document.querySelector('#prev-button');
 
 let currentPage;
 let pageCount;
-const paginationLimit = 20;
+const paginationLimit = 2;
 let movies = [];
 
 //Render and pagination
@@ -110,12 +110,12 @@ function clearContainer(container) {
 
 function handleActivePageNumber() {
   document.querySelectorAll('.pagination__number').forEach(button => {
-    button.classList.remove('active');
+    button.classList.remove('activePage');
 
     const pageIndex = Number(button.getAttribute('page-index'));
 
     if (pageIndex === currentPage) {
-      button.classList.add('active');
+      button.classList.add('activePage');
     }
   });
 }
