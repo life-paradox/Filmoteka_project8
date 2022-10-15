@@ -44,45 +44,6 @@ const fetchQueryFilm = async page => {
 };
 export { fetchQueryFilm };
 
-// Рендер карточек
-
-function renderFilms(films) {
-  const markup = films.results.map(
-    ({
-      title,
-      id,
-      poster_path,
-      genre_ids,
-      release_date,
-      first_air_date,
-      year = release_date || first_air_date || ' - ',
-    }) => {
-      const savedGenres = localStorage.getItem('genres');
-      const parseGenres = JSON.parse(savedGenres);
-      const genreName = genre_ids
-        .map(element => parseGenres.genres.find(genre => genre.id === element))
-        .map(element => element.name)
-        .join(',');
-
-      return `<li class="gallery__item">
-            <a href = ''>
-                <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" data-id=${id} alt="" loading="lazy">
-                 <div class="gallery__info">
-            </a>
-                <p class="gallery__title">${title}</p>
-                <p class="gallery__genre">${genreName}</p>     
-                <p class="gallery__year">${year.slice(0, 4)}</p>
-            </div>
-          </li>`;
-    }
-  );
-
-  galleryRef.innerHTML = markup;
-  return films;
-}
-
-export { renderFilms };
-
 //Парсінг жанрів
 galleryRef.addEventListener('click', onModalEvents);
 

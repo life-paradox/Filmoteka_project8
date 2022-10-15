@@ -1,5 +1,6 @@
 import { getFromLocalStorage } from './localStorage';
 export { markupMovies };
+import img from '../images/index-main/index-main-mobile.jpg';
 
 function markupMovies(films) {
   return films
@@ -16,6 +17,7 @@ function markupMovies(films) {
         year = release_date || first_air_date || ' - ',
       }) => {
         const parseGenres = getFromLocalStorage('genres');
+        
         const genreName = genre_ids.map(element =>
           parseGenres.genres.find(genre => genre.id === element)
         );
@@ -27,9 +29,11 @@ function markupMovies(films) {
           genreOutput = genreName.map(element => element.name);
         }
 
+        const defaultImg = !poster_path ? img : `https://image.tmdb.org/t/p/w500${poster_path}`;
+
         return `<li class="gallery__item">
                 <a class="gallery__link" href="">
-                    <img class="gallery__image" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="" loading="lazy">
+                    <img class="gallery__image" src=${defaultImg} alt="" loading="lazy">
                 </a>
                 <div class="gallery__info">
                     <p class="gallery__title">${title || name}</p>
