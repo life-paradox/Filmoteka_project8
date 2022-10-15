@@ -8,6 +8,9 @@ let filteredArrayOfWatchedFilms = [];
 let arrayOfQueuedFilms = [];
 let filteredArrayOfQueuedFilms = [];
 
+const root = document.querySelector('.film-card');
+console.log(root);
+
 const modalElementsRefs = {
   filmImage: document.querySelector('.film-image'),
   votes: document.querySelector('.film-votes'),
