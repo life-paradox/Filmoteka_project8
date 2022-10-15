@@ -1,6 +1,5 @@
 import { pagination, paginationforQuery } from './JS/pagination';
-import { fetchPopFilms, renderFilms } from './JS/main';
-import { renderFilms } from './JS/main';
+import { fetchPopFilms } from './JS/main';
 
 import { theme } from './JS/themeRender';
 
