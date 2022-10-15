@@ -1,17 +1,19 @@
 .modal-footer {
-  background-color: white;
+  // background-color: $bgc-footer;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
 
-  display: block;
-  height: 90vh;
-
+  // display: block;
+  max-height: 95vh;
   width: 280px;
 
+  // padding: 0 0 24px 0;
+
   @include mq(tablet) {
+    max-height: 90vh;
     width: 704px;
   }
 
@@ -20,10 +22,44 @@
   }
 }
 
+.modal-footer__title {
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.8;
+}
+
+// .modal-footer__close-btn {
+//   position: absolute;
+//   top: 5px;
+//   right: 5px;
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   width: 30px;
+//   height: 30px;
+//   padding: 0;
+//   border-radius: 50%;
+//   border-style: none;
+
+//   background-color: $accent-color;
+
+//   &:hover,
+//   :focus {
+//     background-color: $bgc-footer;
+//   }
+// }
+
+.close-btn__icon {
+  width: 24px;
+  height: 24px;
+}
+
 //slider
 
 .slider-wrapper {
-  margin: 16px;
+  margin: 4px;
   position: relative;
   overflow: hidden;
 }
@@ -37,6 +73,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .slide-arrow {
@@ -74,7 +114,112 @@
 }
 
 .slide {
+  display: flex;
   width: 100%;
   height: 100%;
   flex: 1 0 100%;
+
+  padding: 5px;
+
+  flex-direction: column;
+
+  @include mq(tablet) {
+    flex-direction: row;
+  }
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 1;
+  height: 100%;
+
+  margin-bottom: 24px;
+
+  @include mq(tablet) {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+}
+
+.team-member__name {
+  text-align: center;
+  margin-bottom: 8px;
+
+  font-size: 18px;
+}
+
+.team-member__photo-frame {
+  display: flex;
+  justify-content: center;
+
+  height: 250px;
+  margin-bottom: 8px;
+
+  @include mq(tablet) {
+    height: 380px;
+  }
+}
+
+.team-member__photo {
+  height: 100%;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+.team-member__position {
+  text-align: center;
+  margin-bottom: 8px;
+
+  font-size: 16px;
+}
+
+.team-member__part {
+  text-align: center;
+
+  font-size: 16px;
+}
+
+.favorite-film {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 1;
+
+  @include mq(tablet) {
+    justify-content: space-between;
+  }
+}
+
+.favorite-film__title {
+  text-align: center;
+  margin-bottom: 5px;
+
+  color: $accent-text-color;
+  font-size: 18px;
+}
+
+.favorite-film__poster-frame {
+  display: none;
+
+  @include mq(tablet) {
+    display: flex;
+    justify-content: center;
+    height: 380px;
+  }
+}
+
+.favorite-film__poster {
+  height: 100%;
+  width: auto;
+}
+
+.favorite-film__name {
+  text-align: center;
+
+  font-weight: 500;
+  font-size: 16px;
 }

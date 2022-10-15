@@ -19,7 +19,7 @@ let movies = [];
 function pagination(key) {
   updateMovies(key);
 
-  if (movies.length === 0) {
+  if (!movies.length) {
     paginationNav.classList.add('hidden');
     return;
   }
@@ -46,7 +46,7 @@ function pagination(key) {
 function updateMovies(key) {
   movies = getFromLocalStorage(key);
 
-  if (movies === null) {
+  if (!movies) {
     movies = [];
     clearContainer(moviesList);
     insertListItems('Oops...Nothing added.');
