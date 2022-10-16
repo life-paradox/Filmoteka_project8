@@ -10,8 +10,6 @@
       rgba(0, 0, 0, 0.56)
     ),
     url('../images/bg-img/Rectangle-mob1.jpg');
-  // flex-grow: 1;
-
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -70,9 +68,7 @@
     }
   }
 }
-// .logo > img {
-//   width: 30px;
-// }
+
 .header_nav {
   display: flex;
   justify-content: center;
@@ -133,7 +129,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: darkgray;
+    color: $hover-color;
   }
 }
 
