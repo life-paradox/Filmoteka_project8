@@ -59,7 +59,9 @@ function handleWatchBtnClick(evt, element, onModalChange) {
   }
 
   setWatchedFilms(watchedFilms);
-  onModalChange();
+  if (onModalChange) {
+    onModalChange();
+  }
 }
 
 function handleQueueBtnClick(evt, element, onModalChange) {
@@ -76,22 +78,25 @@ function handleQueueBtnClick(evt, element, onModalChange) {
   }
 
   setQueuedFilms(queuedFilms);
-  onModalChange();
+
+  if (onModalChange) {
+    onModalChange();
+  }
 }
 
-function handleModalOpen(modal, element) {
+function handleModalOpen(modal, element, onModalChange) {
   const addToWatch = modal.querySelector('.watched-films-btn');
   const addToQueue = modal.querySelector('.queued-films-btn');
 
   addToWatch.addEventListener('click', evt =>
-    handleWatchBtnClick(evt, element)
+    handleWatchBtnClick(evt, element, onModalChange)
   );
   addToQueue.addEventListener('click', evt =>
-    handleQueueBtnClick(evt, element)
+    handleQueueBtnClick(evt, element, onModalChange)
   );
 }
 
-export default function onModalEvents(evt) {
+export default function onModalEvents(evt, onModalChange) {
   evt.preventDefault();
   const films = JSON.parse(localStorage.getItem('films'));
   const genres = JSON.parse(localStorage.getItem('genres'));

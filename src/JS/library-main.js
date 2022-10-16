@@ -145,6 +145,6 @@ function handlePageButtonsStatus() {
 
 moviesList.addEventListener('click', evt => {
   onModalEvents(evt, () => {
-    pagination(getFromLocalStorage('page'));
+    pagination(localStorage.getItem(`page`));
   });
 });
