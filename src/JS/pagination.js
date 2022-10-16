@@ -19,6 +19,22 @@ let pageCount;
 const paginationLimit = 20;
 let movies;
 
+prevButton.addEventListener('click', () => {
+  fetchPopFilms(currentPage - 1).then(renderPage);
+});
+
+nextButton.addEventListener('click', () => {
+  fetchPopFilms(currentPage + 1).then(renderPage);
+});
+
+paginationWrapper.addEventListener('click', e => {
+  if (e.target.hasAttribute('page-index')) {
+    fetchPopFilms(Number(e.target.getAttribute('page-index'))).then(
+      renderPage
+    );
+  }
+});
+
 //Render and pagination
 function pagination(films) {
   movies = films;
@@ -31,22 +47,6 @@ function pagination(films) {
   // paginationNav.classList.remove('hidden');
   pageCount = Math.ceil(movies.total_results / paginationLimit);
   renderPage(films);
-
-  prevButton.addEventListener('click', () => {
-    fetchPopFilms(currentPage - 1).then(renderPage);
-  });
-
-  nextButton.addEventListener('click', () => {
-    fetchPopFilms(currentPage + 1).then(renderPage);
-  });
-
-  paginationWrapper.addEventListener('click', e => {
-    if (e.target.hasAttribute('page-index')) {
-      fetchPopFilms(Number(e.target.getAttribute('page-index'))).then(
-        renderPage
-      );
-    }
-  });
 }
 
 function renderPage(films) {
