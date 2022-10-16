@@ -1,8 +1,6 @@
 .gallery {
   padding-top: 60px;
 
-  //margin-left: auto;
-  //margin-right: auto;
   display: flex;
   flex-wrap: wrap;
 
@@ -55,18 +53,14 @@
   background-size: cover;
   @include mq(mobile) {
     height: 398px;
-    background-image: url(/src/images/index-main/index-main-mobile.jpg);
-    @include mq(retina) {
-      background-image: url(/src/images/index-main/index-main-mobile2x.jpg);
-    }
   }
 
   @include mq(tablet) {
     height: 455px;
-    background-image: url(/src/images/index-main/index-main-tablet.jpg);
-    @include mq(retina) {
-      background-image: url(/src/images/index-main/index-main-tablet2x.jpg);
-    }
+  }
+
+  @include mq(desktop) {
+    height: 574px;
   }
 }
 
@@ -75,6 +69,22 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  &::before {
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    @include mq(mobile-only) {
+      content: url(/src/images/index-main/index-main-mobile.jpg);
+    }
+  
+    @include mq(tablet-only) {
+      content: url(/src/images/index-main/index-main-tablet.jpg);
+    }
+  
+    @include mq(desktop) {
+        content: url(/src/images/index-main/index-main-desktop.jpg);
+    }
+  }
 }
 
 .gallery__info {
