@@ -40,7 +40,6 @@ const fetchQueryFilm = async page => {
     `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchData}&page=${page}&include_adult=false`
   );
   const films = await response.json();
-  console.log('result of fetch', films);
   return films;
 };
 export { fetchQueryFilm };
