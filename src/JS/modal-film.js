@@ -45,7 +45,7 @@ function getMarkup({
   `;
 }
 
-function handleWatchBtnClick(evt, element) {
+function handleWatchBtnClick(evt, element, onModalChange) {
   const watchedFilms = getWatchedFilms();
   const watchedFilm = watchedFilms.find(x => x.id === element.id);
 
@@ -59,9 +59,10 @@ function handleWatchBtnClick(evt, element) {
   }
 
   setWatchedFilms(watchedFilms);
+  onModalChange();
 }
 
-function handleQueueBtnClick(evt, element) {
+function handleQueueBtnClick(evt, element, onModalChange) {
   const queuedFilms = getQueuedFilms();
   const queuedFilm = queuedFilms.find(x => x.id === element.id);
 
@@ -75,6 +76,7 @@ function handleQueueBtnClick(evt, element) {
   }
 
   setQueuedFilms(queuedFilms);
+  onModalChange();
 }
 
 function handleModalOpen(modal, element) {
@@ -123,5 +125,5 @@ export default function onModalEvents(evt) {
   const filmCard = document.createElement('div');
 
   filmCard.innerHTML = markup;
-  new Modal(filmCard, modal => handleModalOpen(modal, element));
+  new Modal(filmCard, modal => handleModalOpen(modal, element, onModalChange));
 }
