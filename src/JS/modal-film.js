@@ -1,4 +1,5 @@
 import Modal from './modal';
+import getFromLocalStorage from './localStorage';
 
 let arrayOfWatchedFilms = [];
 let filteredArrayOfWatchedFilms = [];
@@ -6,7 +7,6 @@ let arrayOfQueuedFilms = [];
 let filteredArrayOfQueuedFilms = [];
 
 const root = document.querySelector('.film-card');
-console.log(root);
 
 const modalElementsRefs = {
   filmImage: document.querySelector('.film-image'),
@@ -82,7 +82,12 @@ export default function onModalEvents(evt) {
               );
           }
         });
+        if (getFromLocalStorage('watchedFilms')) {
+          arrayOfWatchedFilms = getFromLocalStorage('watchedFilms');
+        }
+
         const addToQueue = modal.querySelector('.queued-films-btn');
+
         addToQueue.addEventListener('click', e => {
           if (Number(evt.target.dataset.id) === element.id) {
             arrayOfQueuedFilms.push(element),
@@ -94,29 +99,10 @@ export default function onModalEvents(evt) {
           }
         });
       });
-
-      // votes.textContent = `${element.vote_average.toFixed(2)}/${
-      //   element.vote_count
-      // }`;
-
-      // filmImage.setAttribute(
-      //   'src',
-      //   `https://image.tmdb.org/t/p/w500${element.poster_path}`
-      // );
-
-      // title.textContent = `${element.title}`;
-      // popularity.textContent = `${element.popularity.toFixed(2)}`;
-      // originalTitle.textContent = `${element.original_title}`;
-      // about.textContent = `${element.overview}`;
-      // genre.textContent = `${genreName}`;
-
-      // const closeModalBtn = document.querySelector('[data-modal="close"]');
-      // const backdrop = document.querySelector('.backdrop');
-      // backdrop.classList.add('active');
-
-      // closeModalBtn.addEventListener('click', e =>
-      //   backdrop.classList.remove('active')
-      // );
     }
   });
 }
+if (getFromLocalStorage('queuedFilms')) {
+  arrayOfQueuedFilms = getFromLocalStorage('queuedFilms');
+}
+console.log(localStorage.getItem('queuedFilms'));
