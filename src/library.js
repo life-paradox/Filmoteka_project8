@@ -21,6 +21,7 @@ const watchedMovies = () => {
   watchedButton.classList.remove('button_watched');
   queueButton.classList.add('button_watched');
   localStorage.setItem('page', watchedKey);
+  
 };
 
 const queuedMovies = () => {

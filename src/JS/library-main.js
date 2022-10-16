@@ -16,32 +16,35 @@ let pageCount;
 const paginationLimit = 2;
 let movies = [];
 
+
+prevButton.addEventListener('click', () => {
+  renderPage(currentPage - 1);
+});
+
+nextButton.addEventListener('click', () => {
+  renderPage(currentPage + 1);
+});
+
+paginationWrapper.addEventListener('click', e => {
+  if (e.target.hasAttribute('page-index')) {
+    renderPage(Number(e.target.getAttribute('page-index')));
+  }
+});
+
 //Render and pagination
 function pagination(key) {
+  
   updateMovies(key);
 
   if (!movies.length) {
     paginationNav.classList.add('hidden');
     return;
   }
-
+  currentPage = 1;
   paginationNav.classList.remove('hidden');
   pageCount = Math.ceil(movies.length / paginationLimit);
-  renderPage(1);
 
-  prevButton.addEventListener('click', () => {
-    renderPage(currentPage - 1);
-  });
-
-  nextButton.addEventListener('click', () => {
-    renderPage(currentPage + 1);
-  });
-
-  paginationWrapper.addEventListener('click', e => {
-    if (e.target.hasAttribute('page-index')) {
-      renderPage(Number(e.target.getAttribute('page-index')));
-    }
-  });
+  renderPage(currentPage);
 }
 
 function updateMovies(key) {
@@ -57,7 +60,6 @@ function updateMovies(key) {
 
 function renderPage(pageNum) {
   currentPage = pageNum;
-
   const prevRange = (pageNum - 1) * paginationLimit;
   const currRange = pageNum * paginationLimit;
   const currentMovies = movies.slice(prevRange, currRange);
