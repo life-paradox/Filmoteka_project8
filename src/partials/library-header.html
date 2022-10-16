@@ -1,31 +1,35 @@
-<header>
-  <div class="header_lib">
-    <ul class="container header_nav">
-      <li class="header_nav--logo">
-        <a class="logo" href="./index.html">
+<header class="header_lib">
+  <div class="container">
+    <nav class="nav-header">
+      <div class="header-logo">
+        <a class="header-logo__link" href="/src/index.html">
           <svg class="header-logo__icon" width="24" height="24">
             <use href="./images/svg/sprite.svg#logo"></use>
           </svg>
+          <h1 class="header-title">Filmoteka</h1>
         </a>
-      </li>
-      <li class="header_nav--film hidden-lib">
-        <a href="./index.html" class="header_nav--filmoteka link">Filmoteka </a>
-      </li>
-      <li class="header_nav--home">
-        <a class="header_nav--link link" href="./index.html">HOME</a>
-      </li>
-      <li class="header_nav--lib">
-        <a class="header_nav--link header_nav--current link" href=""
-          >MY LIBRARY</a
-        >
-      </li>
-    </ul>
+      </div>
+
+      <ul class="header-list">
+        <li class="header-list__item">
+          <a class="header-list__link" href="/src/index.html">Home</a>
+        </li>
+
+        <li class="header-list__item">
+          <a
+            class="header-list__link header-list__link--current"
+            href="./library.html"
+            >My Library</a
+          >
+        </li>
+      </ul>
+    </nav>
     <ul class="button_list">
       <li class="button_list-watch">
-        <button class="button_watched">WATCHED</button>
+        <button class="button_watched header-lib-button">WATCHED</button>
       </li>
       <li class="button_list-queue">
-        <button class="button_queue">QUEUE</button>
+        <button class="button_queue header-lib-button">QUEUE</button>
       </li>
 
       <label class="switch">
