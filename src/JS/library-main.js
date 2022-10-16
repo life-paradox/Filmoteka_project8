@@ -48,7 +48,7 @@ function pagination(key) {
 function updateMovies(key) {
   movies = getFromLocalStorage(key);
 
-  if (!movies) {
+  if (!movies || !movies.length) {
     movies = [];
     clearContainer(moviesList);
     insertListItems('Oops...Nothing added.');
