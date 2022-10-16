@@ -70,9 +70,9 @@
     }
   }
 }
-.logo > img {
-  width: 30px;
-}
+// .logo > img {
+//   width: 30px;
+// }
 .header_nav {
   display: flex;
   justify-content: center;
@@ -104,7 +104,7 @@
   padding: 5px 10px;
   transition: color$timing-function, 250ms;
   &:hover {
-    color: $accent-text-color;
+    color: $hover-color;
   }
 }
 .header_nav--current::after {
@@ -133,7 +133,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: $accent-text-color;
+    color: darkgray;
   }
 }
 
@@ -153,7 +153,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: darkgrey;
+    color: $hover-color;
   }
 }
 
@@ -171,32 +171,83 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: $accent-text-color;
+    color: $hover-color;
   }
-}
-.theme-day {
-  position: absolute;
-  right: 10px;
-  top: 230px;
-  transition: color$timing-function, 250ms;
-  border-radius: 10px;
-  &:hover {
-    background-color: $accent-text-color;
-  }
-}
-.theme-day--svg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .darkTheme {
-  background-color: black;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9727241238292192) 5%,
+    rgba(62, 7, 24, 0.8578781854538691) 50%,
+    rgba(0, 0, 0, 0.9783263647255778) 96%
+  );
 }
 .footer.darkTheme {
-  background-color: rgb(0, 0, 0);
+  background-color: $theme-color;
   color: $accent-text-color;
 }
-.dark {
+
+.gallery__title.cut-text.darkTheme {
+  color: $accent-text-color;
+}
+
+// чекбокс для переключения темы
+
+.switch {
+  position: absolute;
+  right: 10px;
+  top: 175px;
+
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: $secondary-text-color;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
   background-color: $accent-text-color;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $accent-text-color;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
