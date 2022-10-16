@@ -3,6 +3,8 @@ import { getFromLocalStorage } from './JS/localStorage';
 
 import { theme } from './JS/themeRender';
 
+import { modalFooter } from './JS/modal-footer';
+
 import { slider } from './JS/slider';
 import Modal from './JS/modal';
 
@@ -38,3 +40,5 @@ window.addEventListener('load', () => {
 watchedButton.addEventListener('click', watchedMovies);
 
 queueButton.addEventListener('click', queuedMovies);
+
+modalFooter();
