@@ -6,6 +6,7 @@ function markupMovies(films) {
   return films
     .map(
       ({
+        id,
         title,
         name,
         poster_path,
@@ -17,7 +18,7 @@ function markupMovies(films) {
         year = release_date || first_air_date || ' - ',
       }) => {
         const parseGenres = getFromLocalStorage('genres');
-        
+
         const genreName = genre_ids.map(element =>
           parseGenres.genres.find(genre => genre.id === element)
         );
@@ -29,11 +30,13 @@ function markupMovies(films) {
           genreOutput = genreName.map(element => element.name);
         }
 
-        const defaultImg = !poster_path ? img : `https://image.tmdb.org/t/p/w500${poster_path}`;
+        const defaultImg = !poster_path
+          ? img
+          : `https://image.tmdb.org/t/p/w500${poster_path}`;
 
         return `<li class="gallery__item">
                 <a class="gallery__link" href="">
-                    <img class="gallery__image" src=${defaultImg} alt="${title}" loading="lazy">
+                    <img class="gallery__image" data-id=${id} src=${defaultImg} alt="${title}" loading="lazy">
                 </a>
                 <div class="gallery__info">
                     <p class="gallery__title">${title || name}</p>

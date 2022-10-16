@@ -1,6 +1,7 @@
 import { markupMovies } from './library-markups';
 import { paginationMarkup, paginationMarkupMobile } from './pagination-markups';
 import { getFromLocalStorage } from './localStorage';
+import onModalEvents from './modal-film';
 
 export { pagination };
 
@@ -141,3 +142,5 @@ function handlePageButtonsStatus() {
     enableButton(nextButton);
   }
 }
+
+moviesList.addEventListener('click', onModalEvents);
