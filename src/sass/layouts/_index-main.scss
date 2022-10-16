@@ -76,13 +76,13 @@
     @include mq(mobile-only) {
       content: url(/src/images/index-main/index-main-mobile.jpg);
     }
-  
+
     @include mq(tablet-only) {
       content: url(/src/images/index-main/index-main-tablet.jpg);
     }
-  
+
     @include mq(desktop) {
-        content: url(/src/images/index-main/index-main-desktop.jpg);
+      content: url(/src/images/index-main/index-main-desktop.jpg);
     }
   }
 }
@@ -176,10 +176,10 @@
   transition: opacity 400ms ease-in-out, visibility 0s 400ms;
 }
 
-.show-preloader {
-  visibility: visible;
-  opacity: 1;
-}
+// .show-preloader {
+//   visibility: visible;
+//   opacity: 1;
+// }
 
 .circle {
   background-color: #f9dc97;

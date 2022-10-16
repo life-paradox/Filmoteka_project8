@@ -1,4 +1,4 @@
-function getFromLocalStorage(key) {
+export default function getFromLocalStorage(key) {
   const savedMovies = localStorage.getItem(key);
   return JSON.parse(savedMovies);
 }
