@@ -26,7 +26,7 @@ let searchData;
 export { searchData };
 
 const formRef = document.querySelector('.header-search-form');
-const searchMessage = document.querySelector('.header-info');
+const searchMessage = document.querySelector('.header-info__text');
 
 formRef.addEventListener('submit', onSearch);
 function onSearch(e) {
@@ -37,10 +37,10 @@ function onSearch(e) {
     fetchQueryFilm(1, searchData)
       .then(x => {
         if (x.total_results <= 0) {
-          searchMessage.classList.remove('is');
-
           searchMessage.innerHTML =
             'Search result not successful. Enter the correct movie name and try again.';
+        } else {
+          searchMessage.innerHTML = '';
         }
 
         return x;
@@ -62,18 +62,5 @@ function moveProgressBar() {
   const width_progress_line = (windowScroll / windowHeight) * 100;
   progressBar.style.width = width_progress_line + '%';
 }
-
-// document.querySelector('#goit-students').addEventListener('click', e => {
-//   e.preventDefault();
-
-//   const div = document.createElement('div');
-//   const modal = document.querySelector('.modal-footer');
-//   div.innerHTML = modal.outerHTML;
-//   div.querySelector('.modal-footer').classList.remove('is-hidden');
-
-//   new Modal(div, modalWindow => {
-//     slider(modalWindow);
-//   });
-// });
 
 modalFooter();
