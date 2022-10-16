@@ -3,7 +3,7 @@ import { markupMovies } from './index-markups';
 import { paginationMarkup, paginationMarkupMobile } from './pagination-markups';
 
 import { fetchPopFilms, fetchQueryFilm } from './main';
-
+import { setPageTheme } from './themeRender';
 
 export { pagination };
 export { currentPage };
@@ -29,9 +29,7 @@ nextButton.addEventListener('click', () => {
 
 paginationWrapper.addEventListener('click', e => {
   if (e.target.hasAttribute('page-index')) {
-    fetchPopFilms(Number(e.target.getAttribute('page-index'))).then(
-      renderPage
-    );
+    fetchPopFilms(Number(e.target.getAttribute('page-index'))).then(renderPage);
   }
 });
 
@@ -47,6 +45,7 @@ function pagination(films) {
   // paginationNav.classList.remove('hidden');
   pageCount = Math.ceil(movies.total_results / paginationLimit);
   renderPage(films);
+  setPageTheme();
 }
 
 function renderPage(films) {
@@ -66,6 +65,7 @@ function renderPage(films) {
     : getPaginationNumbers(paginationMarkupMobile(currentPage, pageCount));
   handleActivePageNumber();
   handlePageButtonsStatus();
+  setPageTheme();
 }
 
 function getPaginationNumbers(items) {
@@ -134,7 +134,6 @@ function handlePageButtonsStatus() {
   }
 }
 
-
 function paginationforQuery(films) {
   movies = films;
 
@@ -146,6 +145,7 @@ function paginationforQuery(films) {
   // paginationNav.classList.remove('hidden');
   pageCount = Math.ceil(movies.total_results / paginationLimit);
   renderPage(films);
+  setPageTheme();
 
   prevButton.addEventListener('click', () => {
     fetchQueryFilm(currentPage - 1).then(renderPage);

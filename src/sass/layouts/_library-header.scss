@@ -171,24 +171,6 @@
   }
 }
 
-.darkTheme {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.9727241238292192) 5%,
-    rgba(62, 7, 24, 0.8578781854538691) 50%,
-    rgba(0, 0, 0, 0.9783263647255778) 96%
-  );
-}
-.footer.darkTheme {
-  background-color: $theme-color;
-  color: $accent-text-color;
-}
-
-.gallery__title.cut-text.darkTheme {
-  color: $accent-text-color;
-}
-
 // чекбокс для переключения темы
 
 .switch {

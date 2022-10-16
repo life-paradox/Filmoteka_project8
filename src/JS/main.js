@@ -1,6 +1,7 @@
 import { API_KEY } from './const/api-key';
 import onModalEvents from './modal-film';
 import { currentPage } from './pagination';
+import { setPageTheme } from './themeRender';
 
 import { searchData } from '../index';
 

@@ -16,6 +16,7 @@
 
   &__link {
     color: $footer-text-color;
+    color: inherit;
   }
 }
 
@@ -51,12 +52,4 @@
   animation-duration: 2000ms;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-}
-
-.footer__rights {
-  display: block;
-}
-
-.footer_devs {
-  display: block;
 }
