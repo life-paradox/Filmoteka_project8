@@ -206,15 +206,14 @@
   }
 }
 
-
-
 .header-info {
-  // display: none;
   font-size: 14px;
   line-height: 1.14;
-  color: transparent;
-
+  color: rgba(255, 0, 27, 1);;
   @media screen and (min-width: 768px) {
     text-align: center;
   }
+}
+.is {
+  color: transparent;
 }

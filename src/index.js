@@ -27,13 +27,27 @@ let searchData;
 export { searchData };
 
 const formRef = document.querySelector('.header-search-form');
+const searchMessage = document.querySelector('.header-info');
+
 formRef.addEventListener('submit', onSearch);
 function onSearch(e) {
   e.preventDefault();
   searchData = formRef.elements.searchQuery.value.trim();
   console.log('search', searchData);
+  //
   if (searchData !== '') {
-    fetchQueryFilm(1, searchData).then(paginationforQuery);
+    fetchQueryFilm(1, searchData)
+      .then(x => {
+        if (x.total_results <= 0) {
+          searchMessage.classList.remove('is');
+
+          searchMessage.innerHTML =
+            'Search result not successful. Enter the correct movie name and try again.';
+        }
+
+        return x;
+      })
+      .then(paginationforQuery);
   }
 }
 
