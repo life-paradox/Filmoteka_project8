@@ -45,7 +45,7 @@ function getMarkup({
   `;
 }
 
-function handleWatchBtnClick(evt, element) {
+function handleWatchBtnClick(evt, element, onModalChange) {
   const watchedFilms = getWatchedFilms();
   const watchedFilm = watchedFilms.find(x => x.id === element.id);
 
@@ -59,9 +59,12 @@ function handleWatchBtnClick(evt, element) {
   }
 
   setWatchedFilms(watchedFilms);
+  if (onModalChange) {
+    onModalChange();
+  }
 }
 
-function handleQueueBtnClick(evt, element) {
+function handleQueueBtnClick(evt, element, onModalChange) {
   const queuedFilms = getQueuedFilms();
   const queuedFilm = queuedFilms.find(x => x.id === element.id);
 
@@ -75,21 +78,25 @@ function handleQueueBtnClick(evt, element) {
   }
 
   setQueuedFilms(queuedFilms);
+
+  if (onModalChange) {
+    onModalChange();
+  }
 }
 
-function handleModalOpen(modal, element) {
+function handleModalOpen(modal, element, onModalChange) {
   const addToWatch = modal.querySelector('.watched-films-btn');
   const addToQueue = modal.querySelector('.queued-films-btn');
 
   addToWatch.addEventListener('click', evt =>
-    handleWatchBtnClick(evt, element)
+    handleWatchBtnClick(evt, element, onModalChange)
   );
   addToQueue.addEventListener('click', evt =>
-    handleQueueBtnClick(evt, element)
+    handleQueueBtnClick(evt, element, onModalChange)
   );
 }
 
-export default function onModalEvents(evt) {
+export default function onModalEvents(evt, onModalChange) {
   evt.preventDefault();
   const films = JSON.parse(localStorage.getItem('films'));
   const genres = JSON.parse(localStorage.getItem('genres'));
@@ -123,5 +130,5 @@ export default function onModalEvents(evt) {
   const filmCard = document.createElement('div');
 
   filmCard.innerHTML = markup;
-  new Modal(filmCard, modal => handleModalOpen(modal, element));
+  new Modal(filmCard, modal => handleModalOpen(modal, element, onModalChange));
 }

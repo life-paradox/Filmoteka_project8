@@ -90,5 +90,9 @@ body {
   width: 0%;
   position: fixed;
   height: 5px;
-  background: #9102c1;
+  background: $accent-text-color;
+}
+
+.content {
+  min-height: calc(100vh - 77px);
 }

@@ -26,7 +26,9 @@ function markupMovies(films) {
         } else {
           genreOutput = genreName.map(element => element.name);
         }
-        const defaultImg = !poster_path ? img : `https://image.tmdb.org/t/p/w500${poster_path}`
+        const defaultImg = !poster_path
+          ? img
+          : `https://image.tmdb.org/t/p/w500${poster_path}`;
 
         return `<li class="gallery__item">
             <a class="gallery__link"  href="">

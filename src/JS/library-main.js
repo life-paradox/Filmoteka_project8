@@ -16,7 +16,6 @@ let pageCount;
 const paginationLimit = 2;
 let movies = [];
 
-
 prevButton.addEventListener('click', () => {
   renderPage(currentPage - 1);
 });
@@ -33,7 +32,6 @@ paginationWrapper.addEventListener('click', e => {
 
 //Render and pagination
 function pagination(key) {
-  
   updateMovies(key);
 
   if (!movies.length) {
@@ -50,7 +48,7 @@ function pagination(key) {
 function updateMovies(key) {
   movies = getFromLocalStorage(key);
 
-  if (!movies) {
+  if (!movies || !movies.length) {
     movies = [];
     clearContainer(moviesList);
     insertListItems('Oops...Nothing added.');
@@ -145,4 +143,8 @@ function handlePageButtonsStatus() {
   }
 }
 
-moviesList.addEventListener('click', onModalEvents);
+moviesList.addEventListener('click', evt => {
+  onModalEvents(evt, () => {
+    pagination(localStorage.getItem(`page`));
+  });
+});
