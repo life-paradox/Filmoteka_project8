@@ -3,8 +3,7 @@ import { fetchPopFilms } from './JS/main';
 
 import { theme } from './JS/themeRender';
 
-import { slider } from './JS/slider';
-import Modal from './JS/modal';
+import { modalFooter } from './JS/modal-footer';
 
 import { fetchQueryFilm } from './JS/main';
 
@@ -65,15 +64,17 @@ function moveProgressBar() {
   progressBar.style.width = width_progress_line + '%';
 }
 
-document.querySelector('#goit-students').addEventListener('click', e => {
-  e.preventDefault();
+// document.querySelector('#goit-students').addEventListener('click', e => {
+//   e.preventDefault();
 
-  const div = document.createElement('div');
-  const modal = document.querySelector('.modal-footer');
-  div.innerHTML = modal.outerHTML;
-  div.querySelector('.modal-footer').classList.remove('is-hidden');
+//   const div = document.createElement('div');
+//   const modal = document.querySelector('.modal-footer');
+//   div.innerHTML = modal.outerHTML;
+//   div.querySelector('.modal-footer').classList.remove('is-hidden');
 
-  new Modal(div, modalWindow => {
-    slider(modalWindow);
-  });
-});
+//   new Modal(div, modalWindow => {
+//     slider(modalWindow);
+//   });
+// });
+
+modalFooter();
