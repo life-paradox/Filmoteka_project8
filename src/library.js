@@ -1,12 +1,6 @@
 import { pagination } from './JS/library-main';
-import { getFromLocalStorage } from './JS/localStorage';
-
-import { theme } from './JS/themeRender';
-
 import { modalFooter } from './JS/modal-footer';
-
-import { slider } from './JS/slider';
-import Modal from './JS/modal';
+import './JS/themeRender';
 
 const watchedButton = document.querySelector('.button_watched');
 const queueButton = document.querySelector('.button_queue');
@@ -21,7 +15,6 @@ const watchedMovies = () => {
   watchedButton.classList.remove('button_watched');
   queueButton.classList.add('button_watched');
   localStorage.setItem('page', watchedKey);
-  
 };
 
 const queuedMovies = () => {
