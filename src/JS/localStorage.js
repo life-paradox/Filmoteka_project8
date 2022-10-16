@@ -19,10 +19,20 @@ function getQueuedFilms() {
   return getFromLocalStorage('queuedFilms') || [];
 }
 
+function setTheme(theme) {
+  return localStorage.setItem('theme', theme);
+}
+
+function getTheme() {
+  return localStorage.getItem('theme');
+}
+
 export {
   getFromLocalStorage,
   setWatchedFilms,
   getWatchedFilms,
   setQueuedFilms,
   getQueuedFilms,
+  setTheme,
+  getTheme,
 };

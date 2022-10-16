@@ -1,13 +1,9 @@
 import { pagination, paginationforQuery } from './JS/pagination';
 import { fetchPopFilms } from './JS/main';
-
-import { theme } from './JS/themeRender';
-
 import { modalFooter } from './JS/modal-footer';
-
 import { fetchQueryFilm } from './JS/main';
-
 import { fetchGenres } from './JS/main';
+import './JS/themeRender';
 
 function moviesRender() {
   if (localStorage.getItem('genres')) {
