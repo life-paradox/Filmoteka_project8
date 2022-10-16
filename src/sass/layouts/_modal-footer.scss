@@ -1,16 +1,6 @@
 .modal-footer {
-  // background-color: $bgc-footer;
-
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-
-  // display: block;
   max-height: 95vh;
   width: 280px;
-
-  // padding: 0 0 24px 0;
 
   @include mq(tablet) {
     max-height: 90vh;
@@ -27,29 +17,6 @@
   font-size: 22px;
   line-height: 1.8;
 }
-
-// .modal-footer__close-btn {
-//   position: absolute;
-//   top: 5px;
-//   right: 5px;
-
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   width: 30px;
-//   height: 30px;
-//   padding: 0;
-//   border-radius: 50%;
-//   border-style: none;
-
-//   background-color: $accent-color;
-
-//   &:hover,
-//   :focus {
-//     background-color: $bgc-footer;
-//   }
-// }
 
 .close-btn__icon {
   width: 24px;

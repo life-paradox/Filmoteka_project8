@@ -10,8 +10,6 @@
       rgba(0, 0, 0, 0.56)
     ),
     url('../images/bg-img/Rectangle-mob1.jpg');
-  // flex-grow: 1;
-
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -70,9 +68,7 @@
     }
   }
 }
-// .logo > img {
-//   width: 30px;
-// }
+
 .header_nav {
   display: flex;
   justify-content: center;
@@ -133,7 +129,7 @@
   transition: color$timing-function, 250ms;
   &:hover,
   &:focus {
-    color: darkgray;
+    color: $hover-color;
   }
 }
 
@@ -173,24 +169,6 @@
   &:focus {
     color: $hover-color;
   }
-}
-
-.darkTheme {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.9727241238292192) 5%,
-    rgba(62, 7, 24, 0.8578781854538691) 50%,
-    rgba(0, 0, 0, 0.9783263647255778) 96%
-  );
-}
-.footer.darkTheme {
-  background-color: $theme-color;
-  color: $accent-text-color;
-}
-
-.gallery__title.cut-text.darkTheme {
-  color: $accent-text-color;
 }
 
 // чекбокс для переключения темы

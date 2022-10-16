@@ -4,6 +4,8 @@
   display: flex;
   flex-wrap: wrap;
 
+  color: $primary-text-color;
+
   @include mq(mobile-only) {
     padding-top: 20px;
     column-gap: 20px;
@@ -107,7 +109,6 @@
 
 .gallery__title {
   width: 100%;
-  color: $primary-text-color;
   text-transform: uppercase;
   font-size: 12px;
   line-height: 1.334;
