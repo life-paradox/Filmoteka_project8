@@ -88,6 +88,14 @@
 }
 .button_list-watch {
   margin-right: 20px;
+
+  @include mq(tablet) {
+    margin-right: 32px;
+  }
+
+  @include mq(desktop) {
+    margin-right: 16px;
+  }
 }
 
 .header_nav--link {
@@ -113,6 +121,18 @@
   border-radius: 2px;
   background-color: #f10c27;
 }
+
+.header-lib-button {
+  min-width: 129.53px;
+
+  @include mq(tablet) {
+    min-width: 152px;
+  }
+  @include mq(desktop) {
+    min-width: 147px;
+  }
+}
+
 .button_watched {
   color: $secondary-text-color;
 

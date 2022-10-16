@@ -100,10 +100,10 @@
   transition: color $timing-function, 250ms;
 
   &:hover {
-    color: darkgray;
+    color: $hover-color;
   }
   &:hover > svg {
-    stroke: darkgray;
+    stroke: $hover-color;
   }
 }
 
@@ -123,6 +123,10 @@
 
 .header-list__item:not(:last-child) {
   margin-right: 39px;
+
+  @include mq(tablet-only) {
+    margin-right: 40px;
+  }
 }
 
 .header-list__link {
