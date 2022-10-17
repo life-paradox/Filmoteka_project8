@@ -13,7 +13,7 @@ const prevButton = document.querySelector('#prev-button');
 
 let currentPage;
 let pageCount;
-const paginationLimit = 2;
+const paginationLimit = 9;
 let movies = [];
 
 prevButton.addEventListener('click', () => {
