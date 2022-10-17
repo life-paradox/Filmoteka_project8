@@ -27,20 +27,28 @@ function getMarkup({
 }) {
   return `
     <div class="film-card">
+      <div class = "film-image-wrapper">
       <img class="film-image" width="290" height="370" src = "${image}" />
-      <p class="film-title">${title}</p>
-      <p class="film-votes">${votes}/ ${averageVotes}</p>
-      <p class="film-original-title">${originalTitle}</p>
-      <p class="film-popularity">${popularity}</p>
-      <p class="genre">${genre}</p>
+      </div>
 
-      <p class="film-about"><br />${about}</p>
+      <div class = "film-info-wrapper">
+      <p class="title film-modal-info"><span class = "title">${title.toUpperCase()}</p> 
+      <div class = "wrapper">
+      <p class="film-votes film-modal-info"><span class = "votes film-info">Vote / Votes</span>${averageVotes} /${votes} </p>
+      <p class="film-original-title film-modal-info"><span class = "original-title film-info">Original Title</span>${originalTitle}</p>
+      <p class="film-popularity film-modal-info"><span class = "popularity film-info">Popularity</span>${popularity}<span></p>
+      <p class="genre film-modal-info"><span class = "genre film-info">Genre</span>${genre}</p>
+      </div>
+      <p class="film-about film-modal-info"><span class = "about-film">ABOUT</span> <br/>   ${about}</p>
+      <div class = "buttons-wrapper">
       <button class="watched-films-btn">${
         isWatched ? BTN_LABELS.REMOVE_FROM_WATCH : BTN_LABELS.ADD_TO_WATCH
       }</button>
       <button class="queued-films-btn">${
         isQueued ? BTN_LABELS.REMOVE_FROM_QUEUE : BTN_LABELS.ADD_TO_QUEUE
       }</button>
+      </div>
+      </div>
     </div>
   `;
 }

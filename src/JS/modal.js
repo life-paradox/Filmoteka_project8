@@ -36,6 +36,7 @@ export default class Modal {
     backdrop.setAttribute(`data-modal-backdrop`, ``);
     modal.setAttribute(`data-modal`, ``);
     modalBody.setAttribute(`data-modal-body`, ``);
+    modal.classList.add(`modal-info`);
     modalCloseBtn.setAttribute(`data-modal-close`, ``);
 
     backdrop.appendChild(modal);
