@@ -36,7 +36,7 @@ function getMarkup({
       <p class="title film-modal-info"><span class = "title">${title.toUpperCase()}</p> 
       <div class="film-info__inner-wrapper">
     <div class = "wrapper">
-      <p class="film-votes film-modal-info"><span class = "votes film-info">Vote / Votes</span>${averageVotes} /${votes} </p>
+      <p class="film-votes film-modal-info"><span class = "votes film-info">Vote / Votes</span><span class = "accent-vote">${averageVotes}</span> /${votes} </p>
       <p class="film-original-title film-modal-info"><span class = "original-title film-info">Original Title</span>${originalTitle}</p>
       <p class="film-popularity film-modal-info"><span class = "popularity film-info">Popularity</span>${popularity}<span></p>
       <p class="genre film-modal-info"><span class = "genre film-info">Genre</span>${genre}</p>
