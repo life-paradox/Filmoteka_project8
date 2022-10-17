@@ -29,7 +29,7 @@
 }
 
 .film-info__inner-wrapper {
-  overflow: scroll;
+  overflow: auto;
   max-height: 260px;
 
   margin-bottom: 26px;
@@ -55,12 +55,10 @@
 
   @media screen and (min-width: 768px) and (max-width: 1199.98px) {
     width: 264px;
-    height: 373.55px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 375px;
-    height: 478px;
   }
   border-radius: 5px;
 }
@@ -112,6 +110,12 @@
 
 .votes {
   margin-right: 41px;
+}
+
+.accent-vote {
+  background-color: $accent-color;
+  border-radius: 2px;
+  padding: 0 2px 0 2px;
 }
 .popularity {
   margin-right: 53px;
