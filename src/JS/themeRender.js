@@ -12,6 +12,7 @@ function setPageTheme() {
   const paginationBtns = document.querySelectorAll('.pagination__number');
   const paginationArrows = document.querySelectorAll('.pagination__arrow');
   const modalWindow = document.querySelector('.modal-footer');
+  const filmModal = document.querySelector('film-card');
 
   if (getTheme() === 'dark') {
     titleRenderTheme.classList.add('darkTheme');
@@ -19,6 +20,7 @@ function setPageTheme() {
     modalWindow.classList.add('darkTheme');
     footerRights.classList.add('darkTheme__light-text');
     footerDevs.classList.add('darkTheme__light-text');
+
     paginationBtns.forEach(el => el.classList.add('darkTheme__light-text'));
     paginationArrows.forEach(el => el.classList.add('darkTheme__light-text'));
     galleryTitleBlack.forEach(el => el.classList.add('darkTheme__light-text'));

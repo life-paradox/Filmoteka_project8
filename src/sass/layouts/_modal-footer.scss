@@ -1,32 +1,30 @@
 .modal-footer {
-  max-height: 95vh;
-  width: 280px;
+  width: 256px;
 
   @include mq(tablet) {
-    max-height: 90vh;
-    width: 704px;
+    width: 680px;
   }
 
   @include mq(desktop) {
-    width: 806px;
+    width: 782px;
   }
 }
 
 .modal-footer__title {
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.8;
 }
 
 //slider
 .slider-wrapper {
-  margin: 4px;
+  margin: 0 4px 0 4px;
   position: relative;
   overflow: hidden;
 }
 
 .slides-container {
-  height: calc(100% - 32px);
+  height: calc(100% - 40px);
   width: 100%;
   display: flex;
   overflow: scroll;
@@ -37,6 +35,7 @@
 
   &::-webkit-scrollbar {
     width: 0;
+    height: 0;
   }
 }
 
@@ -47,7 +46,7 @@
   bottom: 0;
   margin: auto;
   height: 64px;
-  background-color: white;
+  background-color: $secondary-text-color;
   border: none;
   width: 32px;
   font-size: 48px;

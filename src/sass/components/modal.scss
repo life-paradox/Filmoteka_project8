@@ -1,7 +1,9 @@
 @import '../utils/variables';
+@import '../utils/mixins';
 
 [data-modal-backdrop] {
   position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -20,9 +22,16 @@
     top: -100%;
     opacity: 0;
   }
+
+  @include mq(tablet) {
+    position: fixed;
+  }
 }
 
 [data-modal] {
+  max-height: 95vh;
+  overflow: auto;
+
   position: fixed;
   top: 50%;
   left: 50%;
