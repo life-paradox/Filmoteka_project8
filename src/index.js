@@ -32,7 +32,7 @@ function onSearch(e) {
   if (searchData !== '') {
     fetchQueryFilm(1, searchData)
       .then(x => {
-        if (x.total_results <= 0) {
+        if (!x.total_results) {
           searchMessage.innerHTML =
             'Search result not successful. Enter the correct movie name and try again.';
         } else {
