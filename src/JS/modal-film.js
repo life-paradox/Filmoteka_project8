@@ -5,6 +5,7 @@ import {
   setQueuedFilms,
   getQueuedFilms,
 } from './localStorage';
+import img from '../images/index-main/index-main-mobile.jpg';
 
 const BTN_LABELS = {
   ADD_TO_WATCH: 'ADD TO WATCHED',
@@ -124,7 +125,9 @@ export default function onModalEvents(evt, onModalChange) {
     .map(element => element.name)
     .join(', ');
   const filmData = {
-    image: `https://image.tmdb.org/t/p/w500${element.poster_path}`,
+    image: element.poster_path
+      ? `https://image.tmdb.org/t/p/w500${element.poster_path}`
+      : img,
     title: element.title,
     votes: element.vote_count,
     originalTitle: element.original_title,
