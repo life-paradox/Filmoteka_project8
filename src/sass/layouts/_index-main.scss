@@ -177,10 +177,10 @@
   transition: opacity 400ms ease-in-out, visibility 0s 400ms;
 }
 
-// .show-preloader {
-//   visibility: visible;
-//   opacity: 1;
-// }
+.show-preloader {
+visibility: visible;
+opacity: 1;
+}
 
 .circle {
   background-color: #f9dc97;
